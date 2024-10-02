@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import image842 from '../../Assets/image842.png'
 import './SignUpForm.css'
 
 
@@ -44,9 +45,9 @@ const handleSubmit = (e: React.FormEvent) => {
 }
 
 return ( 
-    <div className='singup-container'>
+    <div className='signup-container'>
         <div className='image-section'>
-            <img src="/desafio-02-aws-react/src/Assets/image 842.png" alt="imagem de fundo" />
+        <img src={image842} alt="spider" />
         </div>
     <div className="signup-form-container">
         <h1>Crie seu herói</h1>
@@ -59,8 +60,6 @@ return (
                 onChange={(e) => setName(e.target.value)}
                 required
                 />
-            </div>
-            <div className="form-group">
                 <input
                 type="email"
                 placeholder="email"
@@ -68,8 +67,6 @@ return (
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 />
-            </div>
-            <div className="form-group">
                 <input
                 type="password"
                 placeholder="password"
@@ -77,8 +74,6 @@ return (
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 />
-            </div>
-            <div className="form-group">
                 <input
                 type="password"
                 placeholder="Confirme a senha"
