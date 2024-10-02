@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    footer {
+        text-align: center;
+        padding: 24px 0;
+    }
+
+    font-family: "Sofia Sans",
+    sans-serif;
+    line-height: 130%;
+
+    nav {
+        display: flex;
+        margin-top: 24px;
+        font-weight: 800;
+        font-size: 18px;
+        gap: 6px;
+    }
+}
+
+.comic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 24px;
+    gap: 36px;
+
+    .cover {
+        box-shadow: 12px 24px 12px 12px rgba(243, 243, 243, 0.75);
+        max-width: 320px;
+    }
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .title {
+            font-size: 18px;
+            font-weight: 800;
+
+            p {
+                color: #FF8100;
+            }
+        }
+
+        .details {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 24px;
+
+
+            .characters {
+                grid-column: span 2;
+
+                .character {
+                    width: min-content;
+
+                    img {
+                        border-radius: 18px 0 18px 0;
+                    }
+
+                    b {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            
+            button {
+                font-size: 14px;
+                font-weight: 800;
+                color: #FAFFFD;
+                background-color: #FF8100;
+                padding: 6px 8px;
+                gap: 8px;
+                border-radius: 16px;
+                border: 1px solid #FF8100;
+            }
+
+            button:hover {
+                cursor: pointer;
+                color: #0C0C0C;
+                background-color: #FAFFFD;
+                border-color: #0C0C0C;
+            }
+        }
+
+        article {
+
+            h3,
+            p {
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            h3 {
+                color: #BABABA;
+            }
+        }
+    }
+}
+
+.moreComics {
+    gap: 16px;
+    height: 260px;
+    padding: 24px 0;
+    position: relative;
+    overflow: hidden;
+
+    h3 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .thumbnail {
+        display: inline-block;
+        width: 100px;
+        height: 200px;
+
+        b {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+
+    .row {
+        position: absolute;
+        overflow: auto;
+        width: 100%;
+    }
+
+    scrollbar-color: #FF8100 transparent;
+    ::-webkit-scrollbar-thumb {
+        background-color: #FF8100;
+    }
+}
+
+.row {
+    display: flex;
+    padding: 16px 0;
+    gap: 16px;
+}
