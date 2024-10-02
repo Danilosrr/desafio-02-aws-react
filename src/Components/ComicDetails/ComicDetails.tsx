@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { RxChevronLeft } from "react-icons/rx";
 import { request } from "../../Api/api";
 import "./ComicDetails.css";
+import { characterMock, comicMock, comicsMock } from "./mock";
 
 interface Comic {
   id: number;
@@ -11,6 +12,7 @@ interface Comic {
   characters: { items: { name: string; resourceURI: string } };
   description: string;
   pageCount: number;
+  thumbnail: { extension: string; path: string };
   images: { extension: string; path: string }[];
   prices: { price: number; type: string }[];
   series: { name: string; resourceURL: string };
@@ -26,14 +28,17 @@ interface Character {
 export default function ComicDetails() {
   const { id } = useParams();
   const [comic, setComic] = useState<Comic | null>(null);
+  const [comics, setComics] = useState<Comic[] | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
 
   async function getData() {
     try {
-      const { data } = await request(`/v1/public/comics/${id}`);
-      const characters = await request(`/v1/public/comics/${id}/characters`);
-      setComic(data.results[0]);
-      console.log(characters.data.results[0]);
+      const comic = comicMock; //await request(`/v1/public/comics/${id}`);
+      const comics = comicsMock; //await request(`/v1/public/comics/${id}/characters?limit=20`);
+      const characters = characterMock; //await request(`/v1/public/comics/${id}/characters?limit=3`);
+       
+      setComic(comic.data.results[0] as unknown as Comic);
+      setComics(comics.data.results as unknown as Comic[]);
       setCharacters(characters.data.results);
     } catch (error) {
       console.log(error);
@@ -82,22 +87,24 @@ export default function ComicDetails() {
                 </article>
                 <article className="characters">
                   <h3>Personagens da obra</h3>
-                  {characters.map((c) => {
-                    return (
-                      <figure className="character" key={c.name}>
-                        <img
-                          src={
-                            c.thumbnail.path +
-                            "/standard_medium" +
-                            "." +
-                            c.thumbnail.extension
-                          }
-                          alt="character"
-                        />
-                        <b>{c.name}</b>
-                      </figure>
-                    );
-                  })}
+                  <div className="row">
+                    {characters.slice(0, 3).map((c) => {
+                      return (
+                        <figure className="character" key={c.name}>
+                          <img
+                            src={
+                              c.thumbnail.path +
+                              "/standard_medium" +
+                              "." +
+                              c.thumbnail.extension
+                            }
+                            alt="character"
+                          />
+                          <b>{c.name}</b>
+                        </figure>
+                      );
+                    })}
+                  </div>
                 </article>
               </div>
               <section className="buttons">
@@ -105,6 +112,27 @@ export default function ComicDetails() {
                 <button>Comprar agora</button>
               </section>
             </aside>
+          </div>
+          <div className="moreComics">
+            <h3>Mais Obras</h3>
+            <div className="row">
+              {comics?.map((c) => {
+                return (
+                  <figure className="thumbnail" key={c.id}>
+                    <img
+                      src={
+                        c.thumbnail.path +
+                        "/portrait_medium" +
+                        "." +
+                        c.thumbnail.extension
+                      }
+                      alt={c.title}
+                    />
+                    <b>{c.title}</b>
+                  </figure>
+                );
+              })}
+            </div>
           </div>
           <footer>Todos os direitos reservados a UOL Comics 2024</footer>
         </div>
