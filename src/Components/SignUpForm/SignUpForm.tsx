@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import image842 from '../../Assets/image842.png'
+import IconUser from '../Icons/IconUser';
+import IconEMail from '../Icons/IconEmail';
+import IconLock from '../Icons/IconLock';
+import IconConfirm from '../Icons/IconConfirm';
 import './SignUpForm.css'
 
 
@@ -52,36 +56,56 @@ return (
     <div className="signup-form-container">
         <h1>Crie seu herói</h1>
         <form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <input
-                type="text"
-                placeholder="Nome Completo"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                />
-                <input
-                type="email"
-                placeholder="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                />
-                <input
-                type="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                />
-                <input
-                type="password"
-                placeholder="Confirme a senha"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                />
-            </div>
+        <div className="form-group">
+    <div className='input-container'>
+        <span className="icon">
+            <IconUser />
+        </span>
+        <input
+            type="text"
+            placeholder="Nome Completo"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+        />
+    </div>
+    <div className='input-container'>
+    <span className="icon">
+            <IconEMail />
+        </span>
+        <input
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+        />
+    </div>
+    <div className='input-container'>
+    <span className="icon">
+            <IconLock />
+        </span>
+        <input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+        />
+    </div>
+    <div className='input-container'>
+    <span className="icon">
+            <IconConfirm />
+        </span>
+        <input
+            type="password"
+            placeholder="Confirme a senha"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+        />
+    </div>
+</div>
             <button type="submit" className="submit-btn">Criar conta</button>
         </form>
         <p className="login-link">Já tem uma conta ? <a href="/login">Clique aqui</a></p>
