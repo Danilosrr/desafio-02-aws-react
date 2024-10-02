@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EmpetyCar from './Components/Checkout/EmpetyCar';
+import EmptyCar from './Components/Checkout/EmptyCar';
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<></>}/>
+      <Route path='/carrinho' element={<EmptyCar/>}/>
       <Route path='/' element={<></>}/>
       <Route path='/' element={<></>}/>
       <Route path='/' element={<></>}/>
