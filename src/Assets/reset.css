@@ -46,3 +46,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+#root{
+	position: absolute;
+	height: calc(100% - 84px);
+	width: 100%;
+}

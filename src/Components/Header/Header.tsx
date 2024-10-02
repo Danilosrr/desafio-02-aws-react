@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { RxExit, RxMagnifyingGlass } from "react-icons/rx";
 import { BsCart3 } from "react-icons/bs";
@@ -8,9 +8,6 @@ import "./Header.css";
 export default function Header() {
   const searchInput = useRef<HTMLInputElement>(null);
 
-  useEffect(()=>{
-    console.log(window.innerWidth)
-  },[])
   function handleBarClick() {
     searchInput.current?.focus();
     //a concluir
