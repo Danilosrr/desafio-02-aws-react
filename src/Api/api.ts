@@ -21,6 +21,3 @@ export async function request(url: string) {
   }
 }
 
-export async function fetchCharacterById(id: number) {  
-  return request(`/v1/public/characters/${id}`);  
-}  
