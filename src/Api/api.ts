@@ -16,7 +16,7 @@ export async function request(url: string) {
     const { data } = await api.get(url);
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     throw new Error("api request failed!");
   }
 }

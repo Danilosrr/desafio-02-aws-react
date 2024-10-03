@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import EmpetyCar from './Components/Checkout/EmpetyCar';
 import SignUpForm from './Components/SignUpForm/SignUpForm';
 import ComicList from './Pages/ComicHome';
 import ComicDetailsPage from './Pages/ComicDetailsPage';
@@ -18,7 +19,7 @@ function App() {
       <Route path='/' element={<></>}/>
       <Route path='/' element={<></>}/>
     </Routes>
-    </BrowserRouter>
+     </BrowserRouter>
   );
 }
 
