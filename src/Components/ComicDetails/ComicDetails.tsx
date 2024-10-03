@@ -139,8 +139,8 @@ export default function ComicDetails() {
                 );
               })}
             </div>
+            <footer>Todos os direitos reservados a UOL Comics 2024</footer>
           </div>
-          <footer>Todos os direitos reservados a UOL Comics 2024</footer>
         </div>
       ) : (
         <div className="loader">
