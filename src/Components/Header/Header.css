@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+.header {
+    z-index: 99;
+    position: sticky;
+    top: 0;
+    background-color: #FAFFFD;
+    padding: 16px;
+    display: flex;
+    gap: 64px;
+
+    .link,
+    section,
+    button,
+    input {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
+
+    font-family: "Sofia Sans",
+    sans-serif;
+    line-height: 130%;
+}
+
+.logo {
+    gap: 7.5px;
+
+    h1 {
+        font-size: 36px;
+        font-weight: 800;
+    }
+
+    b {
+        color: #FF8100;
+    }
+
+    img {
+        width: 48px;
+    }
+}
+
+.searchBar {
+    gap: 7.5px;
+    padding: 12px;
+    border-radius: 30px;
+    background-color: #F3F3F3;
+    color: #BABABA;
+    width: 100%;
+    min-width: fit-content;
+
+    input,
+    button {
+        border: none;
+        background-color: transparent;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+    }
+}
+
+.headerButtons {
+    padding: 9.5px;
+    gap: 16px;
+
+    button {
+        color: #FAFFFD;
+        background-color: #FF8100;
+        padding: 6px 8px;
+        gap: 8px;
+        border-radius: 6px;
+        border: none;
+    }
+
+    .link {
+        text-decoration: none;
+        color: #0c0c0c;
+    }
+
+    .cartIcon {
+        padding: 4px;
+        display: flex;
+        position: relative;
+
+        div {
+            background-color: #FF8100;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+    }
+
+    .active {
+        color: #FF8100
+    }
+}
