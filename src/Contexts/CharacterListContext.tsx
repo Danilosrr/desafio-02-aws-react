@@ -10,6 +10,7 @@ interface CharacterListContextType {
   offset: number;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
   handleNew: () => void;
+  loading: boolean;
 }
 
 export const CharacterListContext = createContext<CharacterListContextType | null>(
@@ -24,6 +25,7 @@ const CharacterContext: React.FC<CharacterContextProps> = ({ children }) => {
   const [character, setCharacter] = useState<Character[]>([]);
   const [error, setError] = useState("");
   const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const fetchResponse = async (newOffset: number) => {
     const publicKey = process.env.REACT_APP_API_KEY;
@@ -39,6 +41,7 @@ const CharacterContext: React.FC<CharacterContextProps> = ({ children }) => {
             hash: hash,
             offset: newOffset,
             limit: 20,
+            
           },
         },
       );
@@ -50,6 +53,8 @@ const CharacterContext: React.FC<CharacterContextProps> = ({ children }) => {
       } else {
         setError("An unknown error occurred");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,6 +78,7 @@ const CharacterContext: React.FC<CharacterContextProps> = ({ children }) => {
         offset,
         setOffset,
         handleNew,
+        loading,
       }}
     >
       {children}

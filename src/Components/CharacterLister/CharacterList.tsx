@@ -1,9 +1,12 @@
 import useCharacterListContext from "../../Hooks/useCharacterListContext"; 
 import Header from "../Header/Header";
-import './CharacterList.css'
+import { Link } from 'react-router-dom';
+import './CharacterList.css';
+
 
 const CharacterList: React.FC = () => {
   const { character, error, handleNew } = useCharacterListContext();
+  
 
  
 
@@ -16,7 +19,8 @@ const CharacterList: React.FC = () => {
           {error && <p>Error: {error}</p>}
           {character.map((character) => (
             <div className="character-Content" key={character.id}>
-              <img
+               <Link to={`/characters/${character.id}`} style={{ textDecoration: 'none' }}>
+               <img
                 src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
                 alt=""
               />
@@ -24,6 +28,8 @@ const CharacterList: React.FC = () => {
               <p className="tittle">
                 {character.name} 
               </p>
+              
+            </Link>
               
              
             </div>

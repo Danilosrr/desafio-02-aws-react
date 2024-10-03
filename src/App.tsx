@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EmpetyCar from './Components/Checkout/EmpetyCar';
+import EmptyCar from './Components/Checkout/EmptyCar';
 import SignUpForm from './Components/SignUpForm/SignUpForm';
 import ComicList from './Pages/ComicHome';
 import ComicDetailsPage from './Pages/ComicDetailsPage';

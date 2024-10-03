@@ -6,6 +6,7 @@
   justify-content: center;
   padding: 20px;
   background-color: #f8f9fa; /* Fundo leve */
+  scroll-behavior: smooth;
  
 
 }
@@ -32,7 +33,7 @@
 
 
 .character-Content:hover::before {
-  transform: translateY(0) skewY(-5deg); /* Move para dentro do card ao passar o mouse */
+  transform: translateY(0) skewY(-5deg); 
 }
 
 .character-Content img {
@@ -67,6 +68,7 @@ color: #FAFFFD;
 flex: none;
 order: 0;
 flex-grow: 0;
+
 
 }
 .line{
