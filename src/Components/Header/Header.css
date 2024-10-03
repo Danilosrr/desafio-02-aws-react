@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
 
 .header {
+    z-index: 99;
+    position: sticky;
+    top: 0;
+    background-color: #FAFFFD;
     padding: 16px;
     display: flex;
     gap: 64px;
@@ -15,7 +19,7 @@
         font-weight: 400;
     }
 
-    box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
+    box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
 
     font-family: "Sofia Sans",
     sans-serif;
@@ -95,5 +99,9 @@
             height: 6px;
             border-radius: 50%;
         }
+    }
+
+    .active {
+        color: #FF8100
     }
 }

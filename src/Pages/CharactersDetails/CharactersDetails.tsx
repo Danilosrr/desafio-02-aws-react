@@ -1,5 +1,6 @@
+import Header from "../../Components/Header/Header"
 export default function CharacterDetails(){
     return(
-        <li>Olá</li>
+        <Header/>        
     )
 }

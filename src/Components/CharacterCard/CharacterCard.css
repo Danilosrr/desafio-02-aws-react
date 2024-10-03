@@ -1,3 +1,36 @@
-body{
-    background-color: blue;
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+
+.character-card {
+    display: flex;
+
+  text-align: center ;
+  justify-content: center;
+  align-items: center;
 }
+
+img {
+  width: 280px;
+  height: 402.5px;
+  border-radius: 15px;
+  box-shadow: 4px 2px 20px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 55px 0px;
+}
+
+h2 {
+  color: #0c0c0c;
+  margin-top: 10px !important;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-family: "Sofia Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  width: 349px;
+  height: 24px;
+  align-self: stretch;
+  text-align: center;
+ 
+}
+

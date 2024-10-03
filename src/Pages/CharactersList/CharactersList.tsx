@@ -1,5 +1,12 @@
+
+
 export default function CharacterList(){
     return(
-        <li>Olá</li>
+        
+        <main className="character-list">
+            <ul>
+                <li></li>
+            </ul>
+        </main>
     )
 }

@@ -11,7 +11,14 @@ function App() {
     <Routes>
       <Route path='/signupforms' element={<SignUpForm />}/>
       <Route path='/comics' element={<ComicList/>}/>
-      <Route path='/character' element={<CharacterCard/>}/>
+      <Route path='/character' element={<CharacterCard character={{
+          id: 0,
+          name: '',
+          thumbnail: {
+            path: '',
+            extension: ''
+          }
+        }}/>}/>
       <Route path='/' element={<></>}/>
       <Route path='/' element={<></>}/>
     </Routes>
