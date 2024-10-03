@@ -1,8 +1,15 @@
 import { useMemo } from "react";
 import useComicListContext from "../../Hooks/useComicListContext";
 import Header from "../Header/Header";
+import { useNavigate } from "react-router-dom";
 
 const ComicList: React.FC = () => {
+  const navigate = useNavigate();
+
+  function handleClick(id:number) {
+    navigate(`/comics/${id}`);
+  }
+
   const { comics, error, handleNew } = useComicListContext();
   const money = useMemo(() => (Math.random() * (5 - 1) + 1).toFixed(2), []);
 
@@ -14,7 +21,7 @@ const ComicList: React.FC = () => {
         <div className="comic-body">
           {error && <p>Error: {error}</p>}
           {comics.map((comic) => (
-            <div className="comic-Content" key={comic.id}>
+            <div className="comic-Content" key={comic.id} onClick={()=>{handleClick(comic.id)}}>
               <img
                 src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
                 alt=""

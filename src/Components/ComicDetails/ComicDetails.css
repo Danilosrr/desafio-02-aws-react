@@ -82,6 +82,9 @@ main {
     }
 
     footer {
+        width: 100%;
+        position: absolute;
+        top: 300px;
         text-align: center;
         padding: 24px 0;
         font-size: 12px;
@@ -218,7 +221,6 @@ main {
             overflow-x: auto;
             width: 100%;
             display: flex;
-            padding: 16px 0;
             gap: 16px;
         }
 

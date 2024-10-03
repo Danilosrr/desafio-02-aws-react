@@ -35,9 +35,9 @@ const ComicContext: React.FC<ComicContextProps> = ({ children }) => {
         "https://gateway.marvel.com/v1/public/comics",
         {
           params: {
-            apikey: publicKey,
-            ts: 3,
-            hash: hash,
+            apikey: '01e97ff8c99fed1b6901f5a4faac2538',
+            ts: 1,
+            hash: '7e4cc8da7d877a04bd3e1ef707b20f55',
             offset: newOffset,
             limit: 20,
           },
