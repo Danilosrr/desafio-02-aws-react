@@ -16,6 +16,7 @@
 }
 .vazio{
     font-size: 50px;
+    margin-bottom: 15px;
 }
 
 .adicione{
@@ -24,5 +25,29 @@
 } 
  .img-text{
   margin-bottom: 100px;
-  margin-top: 50px;
+  margin-top: 40px;
  }
+
+ @media screen and (max-width: 768px){
+ 
+ .h1{
+    font-size: 35px;
+    margin-top: 250px;
+ }
+    .img-text{
+  margin-top: 132px;
+  margin-bottom: 273px;
+ }
+ .img{
+    width: 148px;
+    height: 148px;
+
+ }
+ .vazio{
+    font-size: 40px;
+    margin-bottom: 16px;
+ }
+ .adicione{
+    font-size: 16px;
+ }
+}
