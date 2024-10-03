@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { RxChevronLeft } from "react-icons/rx";
 import { request } from "../../Api/api";
 import "./ComicDetails.css";
-import { characterMock, comicMock, comicsMock } from "./mock";
 
 interface Comic {
   id: number;
+  name?:string;
   title: string;
   issueNumber: number;
   characters: { items: { name: string; resourceURI: string } };
@@ -33,13 +33,15 @@ export default function ComicDetails() {
 
   async function getData() {
     try {
-      const comic = comicMock; //await request(`/v1/public/comics/${id}`);
-      const comics = comicsMock; //await request(`/v1/public/comics/${id}/characters?limit=20`);
-      const characters = characterMock; //await request(`/v1/public/comics/${id}/characters?limit=3`);
+      const comic = await request(`/v1/public/comics/${id}`);
+      const comics = await request(`/v1/public/comics/${id}/characters?limit=20`);
+      const characters = await request(`/v1/public/comics/${id}/characters?limit=3`);
        
-      setComic(comic.data.results[0] as unknown as Comic);
-      setComics(comics.data.results as unknown as Comic[]);
-      setCharacters(characters.data.results);
+      setComic(comic.data.results[0] as Comic);
+      setComics(comics.data.results as Comic[]);
+      setCharacters(characters.data.results as Character[]);
+      console.log(comic.data.results[0],comics.data.results,characters.data.results);
+      return
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +49,7 @@ export default function ComicDetails() {
 
   useEffect(() => {
     getData();
-  });
+  },[]);
 
   return (
     <main className="main">
@@ -126,9 +128,9 @@ export default function ComicDetails() {
                         "." +
                         c.thumbnail.extension
                       }
-                      alt={c.title}
+                      alt={c.name}
                     />
-                    <b>{c.title}</b>
+                    <b>{c.name}</b>
                   </figure>
                 );
               })}

@@ -5,7 +5,7 @@ const config = {
   params: {
     apikey: "01e97ff8c99fed1b6901f5a4faac2538",
     ts: 1,
-    hash: "b9f8974baf26501dcac4490827fc5f29",
+    hash: "7e4cc8da7d877a04bd3e1ef707b20f55",
   },
 };
 
