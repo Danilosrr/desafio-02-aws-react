@@ -81,9 +81,7 @@ export default function CharacterDetails() {
               <article>
                 <h3>Núm. de Páginas</h3>
               </article>
-              <article>
-                <h3>Autor</h3>
-              </article>
+              
               <article>
                 <h3>Série</h3>
                 <p>{character.series?.name}</p>
@@ -110,10 +108,7 @@ export default function CharacterDetails() {
                 </div>
               </article>
             </div>
-            <section className="buttons">
-              <button>Adicionar ao carrinho</button>
-              <button>Comprar agora</button>
-            </section>
+           
           </aside>
         </div>
         <div className="moreComics">

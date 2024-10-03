@@ -1,8 +1,10 @@
-import useCharacterListContext from "../../Hooks/useCharacterListContext";
+import useCharacterListContext from "../../Hooks/useCharacterListContext"; 
 import Header from "../Header/Header";
+import './CharacterList.css'
 
 const CharacterList: React.FC = () => {
   const { character, error, handleNew } = useCharacterListContext();
+
  
 
   return (
@@ -18,6 +20,7 @@ const CharacterList: React.FC = () => {
                 src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
                 alt=""
               />
+              <div className="line"></div>
               <p className="tittle">
                 {character.name} 
               </p>
