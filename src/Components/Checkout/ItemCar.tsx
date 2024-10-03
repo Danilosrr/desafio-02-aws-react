@@ -2,6 +2,8 @@ import React from "react";
 import EmptyCar from "./EmptyCar";
 import {useCar} from './CheckoutLogic';
 import trashIcon from './img/trashIcon.svg';
+import './StylesCar/ItemCar.css';
+
 
 const ItemCar: React.FC = ()=>{
     const {carItems ,removeItem , addItem} = useCar();
@@ -9,8 +11,11 @@ const ItemCar: React.FC = ()=>{
         return <EmptyCar />;
     }
 
-    const Increse = (itemId : number)=>{
+    const Increse = (itemId : number) => {
+        const item = carItems.find(i=>i.id === itemId);
+        if(item){
         addItem({id:itemId, title:"",price:0, image:"",quantity: 1 });
+        }
     };
 
     const Decrese = (itemId : number)=>{
