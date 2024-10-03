@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { RxChevronLeft } from "react-icons/rx";
 import { request } from "../../Api/api";
+import loading from "../../Assets/loading.gif";
 import "./ComicDetails.css";
 
 interface Comic {
@@ -27,6 +28,7 @@ interface Character {
 
 export default function ComicDetails() {
   const { id } = useParams();
+  const [noComic, setNoComic] = useState<boolean>(false);
   const [comic, setComic] = useState<Comic | null>(null);
   const [comics, setComics] = useState<Comic[] | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -43,13 +45,14 @@ export default function ComicDetails() {
       console.log(comic.data.results[0],comics.data.results,characters.data.results);
       return
     } catch (error) {
+      setNoComic(true);
       console.log(error);
     }
   }
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   return (
     <main className="main">
@@ -90,7 +93,7 @@ export default function ComicDetails() {
                 <article className="characters">
                   <h3>Personagens da obra</h3>
                   <div className="row">
-                    {characters.slice(0, 3).map((c) => {
+                    {characters.map((c) => {
                       return (
                         <figure className="character" key={c.name}>
                           <img
@@ -139,7 +142,9 @@ export default function ComicDetails() {
           <footer>Todos os direitos reservados a UOL Comics 2024</footer>
         </div>
       ) : (
-        <h4>Comic not found</h4>
+        <div className="loader">
+          {noComic ? <h4>Comic not found</h4>:<img src={loading} alt="loading" />}
+        </div>
       )}
     </main>
   );

@@ -155,3 +155,21 @@ main {
     padding: 16px 0;
     gap: 16px;
 }
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    height: calc(100vh - 84px);
+
+    img {
+        height: 45px;
+        width: 45px;
+    }
+    h4{
+        color: #BABABA;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
