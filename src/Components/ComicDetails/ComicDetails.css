@@ -73,6 +73,10 @@ main {
     font-family: "Sofia Sans", sans-serif;
     line-height: 130%;
 
+    button:hover, nav:hover{
+        cursor: pointer;
+    }
+
     nav {
         display: flex;
         margin: 24px 0 24px;
@@ -140,6 +144,7 @@ main {
             article {
                 h3,
                 p {
+                    max-width: 200px;
                     font-size: 16px;
                     font-weight: 700;
                 }
@@ -176,13 +181,11 @@ main {
                 border: 1px solid #0C0C0C;
             }
             .primary:hover{
-                cursor: pointer;
                 color: #FF8100;
                 border-color: #FF8100;
                 background-color: #FAFFFD ;
             }
             .secondary:hover{
-                cursor: pointer;
                 color: #FAFFFD;
                 background-color: #0C0C0C ;
             }
