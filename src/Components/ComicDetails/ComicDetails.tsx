@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { RxChevronLeft } from "react-icons/rx";
+import { MdAddShoppingCart } from "react-icons/md";
 import { request } from "../../Api/api";
 import loading from "../../Assets/loading.gif";
 import "./ComicDetails.css";
@@ -36,7 +37,7 @@ export default function ComicDetails() {
   async function getData() {
     try {
       const comic = await request(`/v1/public/comics/${id}`);
-      const comics = await request(`/v1/public/comics/${id}/characters?limit=20`);
+      const comics = await request(`/v1/public/comics?limit=20`);
       const characters = await request(`/v1/public/comics/${id}/characters?limit=3`);
        
       setComic(comic.data.results[0] as Comic);
@@ -113,8 +114,8 @@ export default function ComicDetails() {
                 </article>
               </div>
               <section className="buttons">
-                <button>Adicionar ao carrinho</button>
-                <button>Comprar agora</button>
+                <button className="secondary" ><MdAddShoppingCart/>Adicionar ao carrinho</button>
+                <button className="primary">Comprar agora</button>
               </section>
             </aside>
           </div>
@@ -131,9 +132,9 @@ export default function ComicDetails() {
                         "." +
                         c.thumbnail.extension
                       }
-                      alt={c.name}
+                      alt={c.title}
                     />
-                    <b>{c.name}</b>
+                    <b>{c.title}</b>
                   </figure>
                 );
               })}

@@ -1,59 +1,121 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
 
+@media (min-width: 376px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        nav {
+            display: flex;
+            margin-top: 24px;
+            font-weight: 800;
+            font-size: 18px;
+            gap: 6px;
+        }
+    }
+
+    .comic {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 24px;
+        gap: 36px;
+
+        .cover {
+            box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
+            max-width: 320px;
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            .title {
+                font-size: 18px;
+                font-weight: 800;
+
+                p {
+                    color: #FF8100;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 375px) {
+
+    .container,
+    .comic {
+        gap: 16px;
+        padding: 16px 8px;
+
+        nav {
+            font-size: 18px;
+            font-weight: 700;
+        }
+    }
+
+    .comic {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .cover {
+            box-shadow: 0px 0px 12px 12px rgba(243, 243, 243, 0.95);
+            max-width: 280px;
+        }
+
+        aside {
+            width: 100%;
+
+            .title {
+                font-size: 18px;
+                font-weight: 800;
+
+                p {
+                    color: #FF8100;
+                }
+            }
+
+            .buttons{
+                display: grid;
+                grid-template-columns: 1fr;
+                padding: 18px 0;
+                .primary{
+                    order:-1
+                }
+            }
+        }
+    }
+    .moreComics {
+        gap: 8px;
+        padding: 24px 0;
+        .row {
+            display: flex;
+            padding: 16px 0;
+            gap: 16px;
+        }
+    }
+}
+
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    font-family: "Sofia Sans", sans-serif;
+    line-height: 130%;
 
     footer {
         text-align: center;
         padding: 24px 0;
-    }
-
-    font-family: "Sofia Sans",
-    sans-serif;
-    line-height: 130%;
-
-    nav {
-        display: flex;
-        margin-top: 24px;
-        font-weight: 800;
-        font-size: 18px;
-        gap: 6px;
-    }
-}
-
-.comic {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 24px;
-    gap: 36px;
-
-    .cover {
-        box-shadow: 12px 24px 12px 12px rgba(243, 243, 243, 0.75);
-        max-width: 320px;
+        font-size: 12px;
     }
 
     aside {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-
-        .title {
-            font-size: 18px;
-            font-weight: 800;
-
-            p {
-                color: #FF8100;
-            }
-        }
-
         .details {
             display: grid;
             grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 24px;
-
 
             .characters {
                 grid-column: span 2;
@@ -69,105 +131,124 @@ main {
                         font-weight: 700;
                     }
                 }
+                .row{
+                    display: flex;
+                    padding: 16px 0;
+                    gap: 16px;
+                    overflow-x: auto;
+                    box-sizing: border-box;
+                    width: 100%;
+                }
+            }
+            article {
+                h3,
+                p {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+
+                h3 {
+                    color: #BABABA;
+                }
             }
         }
-
         .buttons {
             display: flex;
             justify-content: center;
             gap: 16px;
-            
+
             button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 font-size: 14px;
                 font-weight: 800;
-                color: #FAFFFD;
-                background-color: #FF8100;
-                padding: 6px 8px;
+                padding: 9px 12px;
                 gap: 8px;
                 border-radius: 16px;
+            }
+
+            .primary{
+                color: #FAFFFD;
+                background-color: #FF8100;
                 border: 1px solid #FF8100;
             }
-
-            button:hover {
-                cursor: pointer;
+            .secondary{
                 color: #0C0C0C;
                 background-color: #FAFFFD;
-                border-color: #0C0C0C;
+                border: 1px solid #0C0C0C;
+            }
+            .primary:hover{
+                cursor: pointer;
+                color: #FF8100;
+                border-color: #FF8100;
+                background-color: #FAFFFD ;
+            }
+            .secondary:hover{
+                cursor: pointer;
+                color: #FAFFFD;
+                background-color: #0C0C0C ;
+            }
+        }
+    }
+
+    .moreComics {
+        gap: 16px;
+        height: 260px;
+        padding: 24px 0;
+        position: relative;
+
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 24px 0;
+        }
+
+        .thumbnail {
+            display: inline-block;
+            width: 100px;
+            height: 200px;
+
+            b {
+                display: block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 12px;
+                font-weight: 500;
             }
         }
 
-        article {
+        .row {
+            position: absolute;
+            overflow-x: auto;
+            width: 100%;
+            display: flex;
+            padding: 16px 0;
+            gap: 16px;
+        }
 
-            h3,
-            p {
-                font-size: 16px;
-                font-weight: 700;
-            }
+        scrollbar-color: #FF8100 transparent;
 
-            h3 {
-                color: #BABABA;
-            }
+        ::-webkit-scrollbar-thumb {
+            background-color: #FF8100;
         }
     }
-}
-
-.moreComics {
-    gap: 16px;
-    height: 260px;
-    padding: 24px 0;
-    position: relative;
-    overflow: hidden;
-
-    h3 {
-        font-size: 24px;
-        font-weight: 700;
-    }
-
-    .thumbnail {
-        display: inline-block;
-        width: 100px;
-        height: 200px;
-
-        b {
-            display: block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 12px;
-            font-weight: 500;
-        }
-    }
-
-    .row {
-        position: absolute;
-        overflow: auto;
-        width: 100%;
-    }
-
-    scrollbar-color: #FF8100 transparent;
-    ::-webkit-scrollbar-thumb {
-        background-color: #FF8100;
-    }
-}
-
-.row {
-    display: flex;
-    padding: 16px 0;
-    gap: 16px;
 }
 
 .loader {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     height: calc(100vh - 84px);
 
     img {
         height: 45px;
         width: 45px;
     }
-    h4{
+
+    h4 {
         color: #BABABA;
         font-size: 24px;
         font-weight: 700;
