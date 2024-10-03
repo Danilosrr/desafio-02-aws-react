@@ -6,14 +6,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        nav {
-            display: flex;
-            margin-top: 24px;
-            font-weight: 800;
-            font-size: 18px;
-            gap: 6px;
-        }
     }
 
     .comic {
@@ -26,25 +18,10 @@
             box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
             max-width: 320px;
         }
-
-        aside {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-
-            .title {
-                font-size: 18px;
-                font-weight: 800;
-
-                p {
-                    color: #FF8100;
-                }
-            }
-        }
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 375px) { /*mobile*/
 
     .container,
     .comic {
@@ -52,6 +29,7 @@
         padding: 16px 8px;
 
         nav {
+            margin-top: 12px;
             font-size: 18px;
             font-weight: 700;
         }
@@ -69,15 +47,6 @@
 
         aside {
             width: 100%;
-
-            .title {
-                font-size: 18px;
-                font-weight: 800;
-
-                p {
-                    color: #FF8100;
-                }
-            }
 
             .buttons{
                 display: grid;
@@ -104,13 +73,45 @@ main {
     font-family: "Sofia Sans", sans-serif;
     line-height: 130%;
 
+    button:hover, nav:hover{
+        cursor: pointer;
+    }
+
+    nav {
+        display: flex;
+        margin: 24px 0 24px;
+        font-weight: 800;
+        font-size: 18px;
+        gap: 6px;
+    }
+
     footer {
+        width: 100%;
+        position: absolute;
+        top: 300px;
         text-align: center;
         padding: 24px 0;
         font-size: 12px;
     }
 
     aside {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        
+        .title {
+            display: grid;
+            padding: 12px 0;
+            gap: 8px;
+
+            font-size: 18px;
+            font-weight: 800;
+
+            p {
+                color: #FF8100;
+            }
+        }
+
         .details {
             display: grid;
             grid-template-rows: 1fr 1fr;
@@ -143,6 +144,7 @@ main {
             article {
                 h3,
                 p {
+                    max-width: 200px;
                     font-size: 16px;
                     font-weight: 700;
                 }
@@ -179,13 +181,11 @@ main {
                 border: 1px solid #0C0C0C;
             }
             .primary:hover{
-                cursor: pointer;
                 color: #FF8100;
                 border-color: #FF8100;
                 background-color: #FAFFFD ;
             }
             .secondary:hover{
-                cursor: pointer;
                 color: #FAFFFD;
                 background-color: #0C0C0C ;
             }
@@ -224,7 +224,6 @@ main {
             overflow-x: auto;
             width: 100%;
             display: flex;
-            padding: 16px 0;
             gap: 16px;
         }
 
