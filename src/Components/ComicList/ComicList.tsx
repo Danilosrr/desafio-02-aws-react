@@ -7,8 +7,8 @@ const ComicList: React.FC = () => {
   const money = useMemo(() => (Math.random() * (5 - 1) + 1).toFixed(2), []);
 
   return (
-      <div>
-        <Header />
+    <div>
+      <Header />
       <div className="">
         {/*tela de loading a fazer */}
         <div className="comic-body">
