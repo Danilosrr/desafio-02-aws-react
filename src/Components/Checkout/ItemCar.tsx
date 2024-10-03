@@ -32,6 +32,7 @@ const ItemCar: React.FC = ()=>{
                 <p>R$ {item.price.toFixed(2)}</p>
                 <div className="quantity-control">
                     <button onClick={()=>Decrese(item.id)}>-</button>
+                    <span>{item.quantity}</span>
                     <button onClick={()=>Increse(item.id)}>+</button>
                 </div>
                 <img src={trashIcon} alt="lixeira de remover item" className="remove-item" onClick={()=> removeItem(item.id)}/>
