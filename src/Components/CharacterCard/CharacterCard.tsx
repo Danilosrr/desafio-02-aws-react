@@ -1,26 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "./CharacterCard.css";
+import React from 'react';  
 
+interface CharacterCardProps {  
+  name: string;  
+  image: string;  
+  onClick: () => void; 
+}  
 
-interface CharacterCardProps{
-    character:{
-    id: number;
-    name: string;
-    thumbnail: {
-        path: string;
-        extension: string;
-    };
-    };
-}
-
-export default function CharacterCard({character}: CharacterCardProps) {
-    
-  return (
-    <article className="character-card">
-        <Link to={`/character/${character.id}`}></Link>
-      <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
-      <h2>{character.name}</h2>
-    </article>
-  );
+export default function CharacterCard({ name, image, onClick }: CharacterCardProps) {  
+  return (  
+    <article className="character-card" onClick={onClick}>  
+      <img src={image} alt={name} />  
+      <h3>{name}</h3>  
+    </article>  
+  );  
 }

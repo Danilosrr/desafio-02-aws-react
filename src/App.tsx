@@ -1,27 +1,21 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import SignUpForm from './Components/SignUpForm/SignUpForm';
-import ComicList from './Pages/ComicList';
-import CharacterCard from './Components/CharacterCard/CharacterCard';
-import "./Assets/reset.css"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SignUpForm from "./Components/SignUpForm/SignUpForm";
+import ComicList from "./Pages/ComicList";
+import "./Assets/reset.css";
+import CharacterList from "./Pages/CharactersList/CharactersList";
+import CharacterDetails from "./Pages/CharactersDetails/CharactersDetails";
 
 function App() {
   return (
-    
     <BrowserRouter>
-    <Routes>
-      <Route path='/signupforms' element={<SignUpForm />}/>
-      <Route path='/comics' element={<ComicList/>}/>
-      <Route path='/character' element={<CharacterCard character={{
-          id: 0,
-          name: '',
-          thumbnail: {
-            path: '',
-            extension: ''
-          }
-        }}/>}/>
-      <Route path='/' element={<></>}/>
-      <Route path='/' element={<></>}/>
-    </Routes>
+      <Routes>
+        <Route path="/signupforms" element={<SignUpForm />} />
+        <Route path="/comics" element={<ComicList />} />
+        <Route path="/characters" element={<CharacterList />} />
+        <Route path="/characters/:id" element={<CharacterDetails />} />
+        <Route path="/" element={<></>} />
+        <Route path="/" element={<></>} />
+      </Routes>
     </BrowserRouter>
   );
 }
