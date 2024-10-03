@@ -1,16 +1,20 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EmptyCar from './Components/Checkout/EmptyCar';
+import ItemCar from './Components/Checkout/ItemCar';
+import { CarProvider } from './Components/Checkout/CheckoutLogic';
 
 function App() {
   return (
     <BrowserRouter>
+    <CarProvider>
     <Routes>
-      <Route path='/carrinho' element={<EmptyCar/>}/>
-      <Route path='/' element={<></>}/>
+      <Route path='/carrinho' element={<ItemCar/>}/>
+      <Route path='/' element={<ItemCar/>}/>
       <Route path='/' element={<></>}/>
       <Route path='/' element={<></>}/>
       <Route path='/' element={<></>}/>
     </Routes>
+    </CarProvider>
     </BrowserRouter>
   );
 }

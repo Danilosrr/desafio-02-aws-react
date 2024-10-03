@@ -2,9 +2,10 @@ import React, {createContext,useContext,useState} from "react";
 
 interface Item {
     id: number;
-    name: string;
+    title: string;
     price: number;
     quantity: number;
+    image: string;
 }
 
 interface CarContextType{
@@ -13,7 +14,7 @@ interface CarContextType{
     removeItem: (itemId: number) => void;
 }
 const CarContext = createContext<CarContextType | undefined>(undefined);
-export const CartProvider : React.FC <{children : React.ReactNode}> =({children})=>{
+export const CarProvider : React.FC <{children : React.ReactNode}> =({children})=>{
     const [carItems, setCarItems] = useState<Item[]>([]);
 
     const addItem = (item :Item)=>{
