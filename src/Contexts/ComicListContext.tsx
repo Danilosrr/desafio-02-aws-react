@@ -10,6 +10,7 @@ interface ComicListContextType {
   offset: number;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
   handleNew: () => void;
+  loading: boolean;
 }
 
 export const ComicListContext = createContext<ComicListContextType | null>(
@@ -24,11 +25,11 @@ const ComicContext: React.FC<ComicContextProps> = ({ children }) => {
   const [comics, setComics] = useState<Comic[]>([]);
   const [error, setError] = useState("");
   const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const fetchResponse = async (newOffset: number) => {
     const publicKey = process.env.REACT_APP_API_KEY;
-    const hash = "73d1299302e594ca3212e73052b13d80"
-
+    const hash = process.env.REACT_APP_API_HASH;
     try {
       const response = await axios.get(
         "https://gateway.marvel.com/v1/public/comics",
@@ -50,6 +51,8 @@ const ComicContext: React.FC<ComicContextProps> = ({ children }) => {
       } else {
         setError("An unknown error occurred");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,6 +76,7 @@ const ComicContext: React.FC<ComicContextProps> = ({ children }) => {
         offset,
         setOffset,
         handleNew,
+        loading,
       }}
     >
       {children}
