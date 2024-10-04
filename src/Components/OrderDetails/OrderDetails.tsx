@@ -1,8 +1,15 @@
 import { IoIosPin, IoIosClock } from "react-icons/io";
 import { BsCurrencyDollar } from "react-icons/bs";
 import "./OrderDetails.css";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderDetails() {
+  const navigate = useNavigate();
+
+  function handleNavigate(){
+    navigate("/comics")
+  }
+  
   const mock = {
     shipping: 3,
     payment: "Cartão de crédito",
@@ -42,7 +49,7 @@ export default function OrderDetails() {
           </span>
         </article>
       </section>
-      <button>Voltar para o início</button>
+      <button onClick={handleNavigate}>Voltar para o início</button>
     </main>
   );
 }
