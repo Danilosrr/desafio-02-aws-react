@@ -2,14 +2,15 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 376px) and (max-width: 767px) {
-  .comic-Content > img {
+@media (min-width: 374px) and (max-width: 767px) {
+  .comic-Content-img {
     width: 240px !important;
     height: 333.33px;
   }
   .comic-Content {
     width: 256px !important;
     padding: 8px;
+    margin: 0!important;
   }
 }
 
@@ -31,11 +32,13 @@
 }
 
 .comic-Content {
+  margin: 32px 72px 0 0;
   display: flex;
   flex-flow: column;
   max-width: 340px;
   padding: 8px;
   justify-content: space-between;
+
 }
 
 .comic-Content:hover {
@@ -46,22 +49,23 @@
   color: white;
 }
 
-.comic-Content > p {
-  max-width: 324px;
-  font-weight: 500;
-  text-align: left;
+.comic-Content>p {
   margin: 8px 0 8px 0;
 }
-.comic-Content > img {
+.comic-Content-img {
   width: 324px;
   height: 450px;
+  background-color: transparent;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
-.tittle {
+.tittle-comics {
+  max-width: 324px;
+  font-weight: 500;
   font-size: 24px;
   color: #0c0c0c;
 }
 
-.comic-Content:hover .tittle {
+.comic-Content:hover .tittle-comics {
   color: white !important;
 }
 
