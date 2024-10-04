@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+.main {
+  font-family: "Sofia Sans", sans-serif;
+  line-height: 130%;
+}
+
+
+.character {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 24px;
+  gap: 36px;
+}
+
+.character img.cover {
+  box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
+  max-width: 320px;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.title {
+  display: grid;
+  padding: 12px 0;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.title p {
+  color: #FF8100;
+}
+
+.details .row{
+  display: flex; /* Updated to display flexbox for side-by-side articles */
+  flex-direction: row; /* Articles arranged horizontally */
+  justify-content: space-between; /* Articles evenly distributed */
+  align-items: center; /* Articles vertically aligned */
+  gap: 24px;
+}
+
+.details article {
+  max-width: 200px;
+  font-size: 16px;
+  font-weight: 700;
+  /* Removed borders and paddings to prevent line breaks */
+}
+
+.details article h3 {
+  color: #BABABA;
+}
+
+
+
+
+
+.relatedComics {
+  gap: 16px;
+  padding: 24px 0;
+  position: relative;
+}
+
+.relatedComics h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 24px 0;
+}
+
+.relatedComics .row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  width: 100%; /* Added width to constrain comics within the container */
+}
