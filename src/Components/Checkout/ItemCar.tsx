@@ -1,5 +1,5 @@
 import React from "react";
-import EmptyCar from "./EmptyCar";
+//import EmptyCar from "./EmptyCar";
 import {useCar} from './CheckoutLogic';
 import trashIcon from './img/trashIcon.svg';
 import './StylesCar/ItemCar.css';
@@ -7,10 +7,9 @@ import './StylesCar/ItemCar.css';
 
 const ItemCar: React.FC = ()=>{
     const {carItems ,removeItem , addItem} = useCar();
-    if (carItems.length ===0){
-        return <EmptyCar />;
-    }
-
+   // if (carItems.length ===0){
+       // return <EmptyCar />;
+    //}
     const Increse = (itemId : number) => {
         const item = carItems.find(i=>i.id === itemId);
         if(item){
@@ -26,7 +25,7 @@ const ItemCar: React.FC = ()=>{
             removeItem(itemId);
         }
     };
-
+console.log(carItems);
     return(
         <div className="car">
         <h1>Meu Carrinho</h1>
