@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
 .all{
+   font-family: "Sofia Sans";
       display: flex;
       flex-direction: column;
     align-items: center;

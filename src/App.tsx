@@ -6,18 +6,18 @@ import ComicHome from "./Pages/ComicHome";
 import ComicDetailsPage from './Pages/ComicDetailsPage';
 import OrderDetailsPage from "./Pages/OrderDetails";
 import "./Assets/reset.css";
-import CartProvider from "./Contexts/CartContext";
 import ComicContext from "./Contexts/ComicListContext";
 import CharacterList from './Pages/CharacterHome';
 import LoginForm from './Components/LoginForm/LoginForm';
 import CharacterContext from './Contexts/CharacterListContext';
+import { CarProvider } from './Components/Checkout/CheckoutLogic';
 
 function App() {
   return (
     <BrowserRouter>
       <ComicContext>
       <CharacterContext>
-        <CartProvider>
+        <CarProvider>
           <Routes>
             <Route path="/signupform" element={<SignUpForm />} />
             <Route path="/comics" element={<ComicHome />} />
@@ -28,7 +28,7 @@ function App() {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/" element={<></>} />
           </Routes>
-        </CartProvider>
+        </CarProvider>
       </CharacterContext>
       </ComicContext>
     </BrowserRouter>

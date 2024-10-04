@@ -4,7 +4,7 @@ import { BsCart3 } from "react-icons/bs";
 import logo from "../../Assets/UOL.png";
 import "./Header.css";
 import SearchBar from "./SearchBar";
-import useCartContext from "../../Hooks/useCartContext";
+import { useCar } from "../Checkout/CheckoutLogic";
 
 export default function Header() {
   const location = useLocation();
@@ -37,7 +37,7 @@ export default function Header() {
 }
 
 function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }>) {
-  const {cartItems} = useCartContext()
+  const {carItems} = useCar()
 
   return (
     <section className="headerButtons">
@@ -51,7 +51,7 @@ function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }
         Personagens
       </Link>
       <div className="cartIcon">
-        {cartItems.length ? <div className="dot" /> : <></>}
+        {carItems.length ? <div className="dot" /> : <></>}
         <BsCart3 />
       </div>
       <button onClick={logout}>
@@ -63,12 +63,12 @@ function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }
 }
 
 function MobileButtons() {
-  const {cartItems} = useCartContext()
+  const {carItems} = useCar()
 
   return (
     <section className="mobileButtons">
       <div className="cartIcon">
-        {cartItems.length ? <div className="dot" /> : <></>}
+        {carItems.length ? <div className="dot" /> : <></>}
         <BsCart3 />
       </div>
       <RxHamburgerMenu />
