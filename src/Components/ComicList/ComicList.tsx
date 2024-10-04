@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import useComicListContext from "../../Hooks/useComicListContext";
 import Header from "../Header/Header";
 import { useNavigate } from "react-router-dom";
-
 const ComicList: React.FC = () => {
   const navigate = useNavigate();
 
@@ -17,17 +16,16 @@ const ComicList: React.FC = () => {
   return (
     <div>
       <Header />
-      <div className="">
-        {/*tela de loading a fazer */}
+      <div>
         <div className="comic-body">
           {error && <p>Error: {error}</p>}
           {comics.map((comic) => (
             <div className="comic-Content" key={comic.id} onClick={()=>{handleClick(comic.id)}}>
-              <img
+              <img className="comic-Content-img "
                 src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
                 alt=""
               />
-              <p className="tittle">
+              <p className="tittle-comics ">
                 {comic.title.split(" (")[0].trim()}{" "}
                 {comic.title.match(/#\d+/)?.[0]}
               </p>
