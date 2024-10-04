@@ -7,16 +7,17 @@ import ComicDetailsPage from "./Pages/ComicDetails";
 import "./Assets/reset.css";
 import ComicHome from "./Pages/ComicHome";
 import CartProvider from "./Contexts/CartContext";
+import LoginForm from "./Components/LoginForm/LoginForm";
 
 function App() {
   return (
     <BrowserRouter>
       <CartProvider>
         <Routes>
-          <Route path="/signupforms" element={<SignUpForm />} />
+          <Route path="/signupform" element={<SignUpForm />} />
           <Route path="/comics" element={<ComicHome />} />
           <Route path="/comics/:id" element={<ComicDetailsPage />} />
-          <Route path="/" element={<></>} />
+          <Route path="/login" element={<LoginForm/>} />
           <Route path="/" element={<></>} />
         </Routes>
       </CartProvider>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import image842 from "../../Assets/image842.png";
 import IconEMail from "../Icons/IconEmail";
 import IconLock from "../Icons/IconLock";
@@ -8,6 +9,8 @@ import "./LoginForm.css";
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,6 +29,8 @@ const LoginForm: React.FC = () => {
 
     alert('Login bem-sucedido!');
     console.log('Usuário logado!', userData)
+
+    navigate("/comics")
   };
   
   return (

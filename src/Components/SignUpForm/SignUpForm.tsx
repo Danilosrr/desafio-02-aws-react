@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import bcrypt from "bcryptjs";
+import { useNavigate } from "react-router-dom";
 import image842 from "../../Assets/image842.png";
 import IconUser from "../Icons/IconUser";
 import IconEMail from "../Icons/IconEmail";
@@ -72,8 +71,8 @@ const SignUpForm: React.FC = () => {
     }
 
     if (valid) {
-        const hashedPassword = bcrypt.hashSync(password, 10);
-        const userData = {name, email, password: hashedPassword};
+        
+        const userData = {name, email, password};
         localStorage.setItem(email, JSON.stringify(userData));
         alert("Conta criada com sucesso!");
         console.log("Usuário registrado:", userData);
