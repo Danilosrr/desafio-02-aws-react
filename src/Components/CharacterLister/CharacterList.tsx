@@ -25,7 +25,7 @@ const CharacterList: React.FC = () => {
                 alt=""
               />
               <div className="line"></div>
-              <p className="tittle">
+              <p className="title">
                 {character.name} 
               </p>
               

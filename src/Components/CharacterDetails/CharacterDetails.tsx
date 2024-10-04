@@ -58,7 +58,7 @@ export default function CharacterDetails() {
 
   return (
     <>
-      <main className="main">
+      <main className="mainCharacterDetails">
         {character ? (
           <div className="container">
             <nav>
@@ -153,7 +153,7 @@ export default function CharacterDetails() {
           </div>
         )}
       </main>
-      <footer>Todos os direitos reservados a UOL Comics 2024</footer>
+      <footer className="footerCharacters">Todos os direitos reservados a UOL Comics 2024</footer>
     </>
   );
 }
