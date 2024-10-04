@@ -4,10 +4,11 @@ import { BsCart3 } from "react-icons/bs";
 import logo from "../../Assets/UOL.png";
 import "./Header.css";
 import SearchBar from "./SearchBar";
+import useCartContext from "../../Hooks/useCartContext";
 
 export default function Header() {
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleLogout() {
     localStorage.removeItem("userData");
@@ -36,6 +37,8 @@ export default function Header() {
 }
 
 function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }>) {
+  const {cartItems} = useCartContext()
+
   return (
     <section className="headerButtons">
       <Link className={url === "comics" ? "link active" : "link"} to="/comics">
@@ -48,7 +51,7 @@ function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }
         Personagens
       </Link>
       <div className="cartIcon">
-        {true ? <div className="dot" /> : <></> /*alterar depois*/}
+        {cartItems.length ? <div className="dot" /> : <></>}
         <BsCart3 />
       </div>
       <button onClick={logout}>
@@ -60,10 +63,12 @@ function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }
 }
 
 function MobileButtons() {
+  const {cartItems} = useCartContext()
+
   return (
     <section className="mobileButtons">
       <div className="cartIcon">
-        {true ? <div className="dot" /> : <></> /*alterar depois*/}
+        {cartItems.length ? <div className="dot" /> : <></>}
         <BsCart3 />
       </div>
       <RxHamburgerMenu />
