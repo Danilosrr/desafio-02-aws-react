@@ -81,30 +81,29 @@ const SignUpForm: React.FC = () => {
   }
 
   return (
-    <div className="signup-container">
-      <div className="image-section">
+    <section className="signup-container">
+      <aside className="image-section">
         <img src={image842} alt="spider" />
-      </div>
+      </aside>
 
-      <div className="form-section">
-        <div className="logo-container">
+      <main className="form-section">
+        <header className="logo-container">
             <span className="uol-icon">
                <img src={image833} alt="Icon UOL" />
             </span>
             <h1>
                 <span className="uol">UOL</span>Comics
                 </h1>
-        </div>
+        </header>
 
-      <div className="signup-form-container">
+      <section className="signup-form-container">
         <h1>Crie seu herói</h1>
-        
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <fieldset className="form-group">
             <div className="input-container">
-              <span className="icon">
+              <label className="icon">
                 <IconUser />
-              </span>
+              </label>
               <input
                 type="text"
                 placeholder="Nome Completo"
@@ -115,9 +114,9 @@ const SignUpForm: React.FC = () => {
               {nameError && <p className="error-message">{nameError}</p>}
             </div>
             <div className="input-container">
-              <span className="icon">
+              <label className="icon">
                 <IconEMail />
-              </span>
+              </label>
               <input
                 type="email"
                 placeholder="email"
@@ -128,9 +127,9 @@ const SignUpForm: React.FC = () => {
               {emailError && <p className="error-message">{emailError}</p>}
             </div>
             <div className="input-container">
-              <span className="icon">
+              <label className="icon">
                 <IconLock />
-              </span>
+              </label>
               <input
                 type="password"
                 placeholder="password"
@@ -143,9 +142,9 @@ const SignUpForm: React.FC = () => {
               )}
             </div>
             <div className="input-container">
-              <span className="icon">
+              <label className="icon">
                 <IconConfirm />
-              </span>
+              </label>
               <input
                 type="password"
                 placeholder="Confirme a senha"
@@ -155,7 +154,7 @@ const SignUpForm: React.FC = () => {
               />
               {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
             </div>
-          </div>
+          </fieldset>
           <button type="submit" className="submit-btn">
             Criar conta
           </button>
@@ -163,9 +162,9 @@ const SignUpForm: React.FC = () => {
         <p className="login-link">
           Já tem uma conta ? <a href="/login">Clique aqui</a>
         </p>
-      </div>
-    </div>
-</div>
+      </section>
+    </main>
+</section>
   );
 };
 export default SignUpForm;

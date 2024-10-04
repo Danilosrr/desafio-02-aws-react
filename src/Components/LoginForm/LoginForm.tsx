@@ -34,22 +34,22 @@ const LoginForm: React.FC = () => {
   };
   
   return (
-    <div className="signup-container">
+    <section className="signup-container">
       <div className="image-section">
         <img src={image842} alt="spider" />
       </div>
 
-      <div className="form-section">
-        <div className="logo-container">
+      <article className="form-section">
+        <header className="logo-container">
             <span className="uol-icon">
                <img src={image833} alt="Icon UOL" />
             </span>
             <h1>
                 <span className="uol">UOL</span>Comics
                 </h1>
-        </div>
+        </header>
 
-      <div className="signup-form-container">
+      <section className="signup-form-container">
         <h1>Login</h1>
         <form onSubmit={handleLogin}>
           <div className="form-group">
@@ -86,9 +86,9 @@ const LoginForm: React.FC = () => {
         <p className="login-link">
           Ainda não tem uma conta ? <a href="/signupform">Clique aqui</a>
         </p>
-      </div>
-    </div>
-</div>
+      </section>
+    </article>
+</section>
   );
 };
 export default LoginForm;
