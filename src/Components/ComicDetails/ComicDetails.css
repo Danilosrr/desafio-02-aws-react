@@ -1,24 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
 
 @media (min-width: 376px) {
-    main {
+    .mainDetails {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-
-    .comic {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-top: 24px;
-        gap: 36px;
-
-        .cover {
-            box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
-            max-width: 320px;
+        
+        .comic {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 24px;
+            gap: 36px;
+    
+            .cover {
+                box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
+                max-width: 320px;
+            }
         }
     }
+
 }
 
 @media (max-width: 375px) { /*mobile*/
@@ -69,7 +70,7 @@
     }
 }
 
-main {
+.mainDetails {
     font-family: "Sofia Sans", sans-serif;
     line-height: 130%;
 

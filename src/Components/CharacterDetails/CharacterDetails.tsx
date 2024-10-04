@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"; // Importando `useNav
 import { RxChevronLeft } from "react-icons/rx";
 import { request } from "../../Api/api";
 import loading from "../../Assets/loading.gif";
-import "./CharacterDetails.css";
+//import "./CharacterDetails.css";
 
 interface Character {
   id: number;

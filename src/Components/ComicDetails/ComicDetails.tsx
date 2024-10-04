@@ -53,7 +53,7 @@ export default function ComicDetails() {
   }, []);
 
   return (
-    <main className="main">
+    <main className="mainDetails">
       {comic ? (
         <div className="container">
           <nav onClick={handleNavigate}>

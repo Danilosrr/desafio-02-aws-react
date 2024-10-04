@@ -1,7 +1,7 @@
 import useCharacterListContext from "../../Hooks/useCharacterListContext"; 
 import Header from "../Header/Header";
 import { Link } from 'react-router-dom';
-import './CharacterList.css';
+//import './CharacterList.css';
 
 
 const CharacterList: React.FC = () => {
