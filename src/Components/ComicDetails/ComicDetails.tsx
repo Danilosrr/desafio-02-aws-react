@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import useCartContext from "../../Hooks/useCartContext";
 import { RxChevronLeft } from "react-icons/rx";
 import { MdAddShoppingCart } from "react-icons/md";
 import { request } from "../../Api/api";
@@ -8,6 +7,7 @@ import loader from "../../Assets/loading.gif";
 import { Character } from "../../types/character-types";
 import { Comic } from "../../types/comic-type";
 import "./ComicDetails.css";
+import { useCar } from "../Checkout/CheckoutLogic";
 
 interface Details {
   comic: Comic | null;
@@ -21,7 +21,7 @@ export default function ComicDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { addToCart } = useCartContext();
+  const {addItem} = useCar();
   const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState<Details>({
     comic: null,
@@ -36,8 +36,18 @@ export default function ComicDetails() {
   }
 
   function handleBuy(now?: boolean) {
-    if (details.comic) addToCart(details.comic);
-    if (now) navigate("/checkout");
+    if (details.comic){
+      const {id,title,prices,images} = details.comic
+      const item = {
+        id,
+        title,
+        price: prices[0].price, 
+        image:images[0].path+images[0].extension,
+        quantity: 1
+      }
+      addItem(item);
+      if (now) navigate("/checkout");
+    }
   }
 
   async function getData() {
