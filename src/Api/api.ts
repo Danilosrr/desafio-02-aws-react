@@ -20,3 +20,4 @@ export async function request(url: string) {
     throw new Error("api request failed!");
   }
 }
+
