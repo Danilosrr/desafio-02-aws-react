@@ -5,6 +5,7 @@ import ComicList from './Pages/ComicHome';
 import ComicHome from "./Pages/ComicHome";
 import ComicDetailsPage from './Pages/ComicDetailsPage';
 import OrderDetailsPage from "./Pages/OrderDetails";
+
 import CharacterDetailsPage from './Pages/CharacterDetailsPage';
 import "./Assets/reset.css";
 import CartProvider from "./Contexts/CartContext";
@@ -25,6 +26,7 @@ function App() {
             <Route path='/characters/:id' element={<CharacterDetailsPage/>}/>
             <Route path="/order" element={<OrderDetailsPage />} />
             <Route path="/login" element={<LoginForm />} />
+            <Route path="/" element={<></>} />
           </Routes>
         </CartProvider>
       </ComicContext>

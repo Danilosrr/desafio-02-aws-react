@@ -12,6 +12,7 @@ const ComicList: React.FC = () => {
 
   const { comics, error, handleNew } = useComicListContext();
   const money = useMemo(() => (Math.random() * (5 - 1) + 1).toFixed(2), []);
+  
 
   return (
     <div>
