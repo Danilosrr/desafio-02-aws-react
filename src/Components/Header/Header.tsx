@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RxExit,RxHamburgerMenu } from "react-icons/rx";
 import { BsCart3 } from "react-icons/bs";
 import logo from "../../Assets/UOL.png";
@@ -7,6 +7,13 @@ import SearchBar from "./SearchBar";
 
 export default function Header() {
   const location = useLocation();
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    localStorage.removeItem("userData");
+    navigate('/');
+  }
+  
 
   function verifyUrl() {
     if (location.pathname.includes("comic")) return "comics";
@@ -23,12 +30,12 @@ export default function Header() {
         <MobileButtons/>
       </section>
       <SearchBar  url={verifyUrl()} />
-      <DesktopButtons url={verifyUrl()} />
+      <DesktopButtons url={verifyUrl()} logout={handleLogout}/>
     </header>
   );
 }
 
-function DesktopButtons({ url }: Readonly<{ url: string }>) {
+function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }>) {
   return (
     <section className="headerButtons">
       <Link className={url === "comics" ? "link active" : "link"} to="/comics">
@@ -44,7 +51,7 @@ function DesktopButtons({ url }: Readonly<{ url: string }>) {
         {true ? <div className="dot" /> : <></> /*alterar depois*/}
         <BsCart3 />
       </div>
-      <button>
+      <button onClick={logout}>
         <RxExit />
         Sair
       </button>

@@ -44,7 +44,7 @@ const SignUpForm: React.FC = () => {
     }
 
     const userData = { name, email, password };
-    localStorage.setItem(email, JSON.stringify(userData));
+    localStorage.setItem('userData', JSON.stringify(userData));
     alert("Conta criada com sucesso!");
     console.log("Usuário registrado:", userData);
   };
