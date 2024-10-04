@@ -3,10 +3,12 @@ import useComicListContext from "../../Hooks/useComicListContext";
 import { RxMagnifyingGlass } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { request } from "../../Api/api";
+import useCharacterListContext from "../../Hooks/useCharacterListContext";
 
 export default function SearchBar({ url }: Readonly<{ url: string }>) {
   const navigate = useNavigate();
   const { setComics } = useComicListContext();
+  const { setCharacter } = useCharacterListContext();
   const [loading, setLoading] = useState(false);
   const searchInput = useRef<HTMLInputElement>(null);
 
@@ -23,13 +25,18 @@ export default function SearchBar({ url }: Readonly<{ url: string }>) {
     try {
       if (queryValid && url==='comics') {
         const searchData = await request(
-            `/v1/public/comics?titleStartsWith=${searchInput.current?.value}&limit=20`
+          `/v1/public/comics?titleStartsWith=${searchInput.current?.value}&limit=20`
         );
         setComics(searchData.data.results);
         navigate("/comics");
       }
       if (queryValid && url==='characters') {
-        //esperando para implementar
+        const searchData = await request(
+          `/v1/public/characters?nameStartsWith=${searchInput.current?.value}&limit=20`
+        );
+        setCharacter(searchData.data.results);
+        console.log(searchData.data.results)
+        navigate("/characters");
       }
     } catch (error) {
       console.log(error);
