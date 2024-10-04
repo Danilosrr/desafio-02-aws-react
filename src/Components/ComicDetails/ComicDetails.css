@@ -10,7 +10,7 @@
         .comic {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            margin-top: 24px;
+            max-width: 765px;
             gap: 36px;
     
             .cover {
@@ -91,7 +91,7 @@
         position: absolute;
         top: 300px;
         text-align: center;
-        padding: 24px 0;
+        padding: 54px 0 36px;
         font-size: 12px;
     }
 
@@ -115,17 +115,17 @@
 
         .details {
             display: grid;
-            grid-template-rows: 1fr 1fr;
+            grid-template-rows: auto auto;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
 
-            .characters {
+            .thumbnails {
                 grid-column: span 2;
 
                 .character {
                     width: min-content;
 
-                    img {
+                    .round {
                         border-radius: 18px 0 18px 0;
                     }
 
@@ -145,7 +145,6 @@
             article {
                 h3,
                 p {
-                    max-width: 200px;
                     font-size: 16px;
                     font-weight: 700;
                 }
@@ -253,4 +252,17 @@
         font-size: 24px;
         font-weight: 700;
     }
+}
+
+.mergedRow{
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+}
+.extendRow{
+    grid-column: span 2;
+}
+.smallRow{
+    max-width: 200px;
 }
