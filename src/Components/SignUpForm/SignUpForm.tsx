@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import image842 from "../../Assets/image842.png";
 import IconUser from "../Icons/IconUser";
 import IconEMail from "../Icons/IconEmail";
@@ -12,6 +13,14 @@ const SignUpForm: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  
+  const [nameError, setNameError] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
+
+  const navigate = useNavigate();
+
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,29 +34,51 @@ const SignUpForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+   
+
+    setEmailError("");
+    setPasswordError("");
+    setConfirmPasswordError("");
+
+    let valid = true
+
+    const existingUser = localStorage.getItem(email);
+    if (existingUser) {
+      setEmailError("Este email já está cadastrado!")
+      valid = false;
+    }
+
+    if (name.trim() === "") {
+      setNameError("O campo de nome é obrigatório")
+      valid = false
+    }       
 
     if (!validateEmail(email)) {
-      alert("Por favor, insira um email válido!");
-      return;
+        setEmailError  ("Por favor, insira um email válido!");
+        valid = false;
     }
 
     if (!validatePassword(password)) {
-      alert(
+        setPasswordError (
         "A senha deve ter no mínimo 6 caracteres, incluindo uma letra maiúscula, um número e um caractere especial"
       );
-      return;
+      valid = false;
     }
 
     if (password !== confirmPassword) {
-      alert("As senhas não coincidem!");
-      return;
+        setConfirmPasswordError ("As senhas não coincidem!");
+        valid = false;
     }
 
-    const userData = { name, email, password };
-    localStorage.setItem(email, JSON.stringify(userData));
-    alert("Conta criada com sucesso!");
-    console.log("Usuário registrado:", userData);
-  };
+    if (valid) {
+        
+        const userData = {name, email, password};
+        localStorage.setItem(email, JSON.stringify(userData));
+        alert("Conta criada com sucesso!");
+        console.log("Usuário registrado:", userData);
+        navigate("/login")
+    }
+  }
 
   return (
     <div className="signup-container">
@@ -67,6 +98,7 @@ const SignUpForm: React.FC = () => {
 
       <div className="signup-form-container">
         <h1>Crie seu herói</h1>
+        
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <div className="input-container">
@@ -80,6 +112,7 @@ const SignUpForm: React.FC = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
+              {nameError && <p className="error-message">{nameError}</p>}
             </div>
             <div className="input-container">
               <span className="icon">
@@ -92,6 +125,7 @@ const SignUpForm: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
+              {emailError && <p className="error-message">{emailError}</p>}
             </div>
             <div className="input-container">
               <span className="icon">
@@ -104,6 +138,9 @@ const SignUpForm: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
             </div>
             <div className="input-container">
               <span className="icon">
@@ -116,6 +153,7 @@ const SignUpForm: React.FC = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
+              {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
             </div>
           </div>
           <button type="submit" className="submit-btn">
