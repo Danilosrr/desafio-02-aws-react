@@ -1,26 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useCartContext from "../../Hooks/useCartContext";
 import { RxChevronLeft } from "react-icons/rx";
 import { MdAddShoppingCart } from "react-icons/md";
 import { request } from "../../Api/api";
 import loading from "../../Assets/loading.gif";
+import { Comic } from "../../types/comic-type";
 import "./ComicDetails.css";
-
-interface Comic {
-  id: number;
-  name?:string;
-  title: string;
-  issueNumber: number;
-  characters: { items: { name: string; resourceURI: string } };
-  description: string;
-  pageCount: number;
-  thumbnail: { extension: string; path: string };
-  images: { extension: string; path: string }[];
-  prices: { price: number; type: string }[];
-  series: { name: string; resourceURL: string };
-  creators: { items: { name: string; resourceURI: string; role: string }[] };
-  dates: { type: string; date: string }[];
-}
 
 interface Character {
   name: string;
@@ -29,10 +15,22 @@ interface Character {
 
 export default function ComicDetails() {
   const { id } = useParams();
+  const {addToCart} = useCartContext()
+  const navigate = useNavigate();
   const [noComic, setNoComic] = useState<boolean>(false);
   const [comic, setComic] = useState<Comic | null>(null);
   const [comics, setComics] = useState<Comic[] | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
+
+
+  function handleNavigate() {
+    navigate(`/comics`);
+  }
+
+  function handleBuy(now?:boolean){
+    if (comic) addToCart(comic);
+    if(now) navigate('/checkout');
+  }
 
   async function getData() {
     try {
@@ -43,7 +41,6 @@ export default function ComicDetails() {
       setComic(comic.data.results[0] as Comic);
       setComics(comics.data.results as Comic[]);
       setCharacters(characters.data.results as Character[]);
-      console.log(comic.data.results[0],comics.data.results,characters.data.results);
       return
     } catch (error) {
       setNoComic(true);
@@ -59,8 +56,8 @@ export default function ComicDetails() {
     <main className="main">
       {comic ? (
         <div className="container">
-          <nav>
-            <RxChevronLeft color="#FF8100" />
+          <nav onClick={handleNavigate}>
+            <RxChevronLeft color="#FF8100"/>
             Voltar
           </nav>
           <div className="comic">
@@ -114,8 +111,8 @@ export default function ComicDetails() {
                 </article>
               </div>
               <section className="buttons">
-                <button className="secondary" ><MdAddShoppingCart/>Adicionar ao carrinho</button>
-                <button className="primary">Comprar agora</button>
+                <button className="secondary" onClick={()=>handleBuy()}><MdAddShoppingCart/>Adicionar ao carrinho</button>
+                <button className="primary" onClick={()=>handleBuy(true)}>Comprar agora</button>
               </section>
             </aside>
           </div>
@@ -139,8 +136,8 @@ export default function ComicDetails() {
                 );
               })}
             </div>
+            <footer>Todos os direitos reservados a UOL Comics 2024</footer>
           </div>
-          <footer>Todos os direitos reservados a UOL Comics 2024</footer>
         </div>
       ) : (
         <div className="loader">
