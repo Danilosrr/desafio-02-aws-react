@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"; // Importando `useNav
 import { RxChevronLeft } from "react-icons/rx";
 import { request } from "../../Api/api";
 import loading from "../../Assets/loading.gif";
-//import "./CharacterDetails.css";
+import "./CharacterDetails.css";
 
 interface Character {
   id: number;
@@ -58,7 +58,7 @@ export default function CharacterDetails() {
 
   return (
     <>
-      <main className="main">
+      <main className="mainCharacterDetails">
         {character ? (
           <div className="container">
             <nav>
@@ -153,7 +153,7 @@ export default function CharacterDetails() {
           </div>
         )}
       </main>
-      <footer>Todos os direitos reservados a UOL Comics 2024</footer>
+      <footer className="footerCharacters">Todos os direitos reservados a UOL Comics 2024</footer>
     </>
   );
 }
