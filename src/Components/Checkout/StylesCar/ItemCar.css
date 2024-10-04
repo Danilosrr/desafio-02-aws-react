@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+.car{
+    font-family: "Sofia Sans";
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:20px;
+    
+}
+.car h1{
+    text-align: center;
+    margin-top: 16px;
+    font-size: 64px;
+    
+}
+.Car-item{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 830px;
+    height: 234px;
+    padding: 10px;
+    margin: 10px 0; 
+    margin-bottom: 32px;
+    background-color: #F3F3F3;
+    border-radius: 8px;
+    position: relative;
+}
+
+.quadrinho {
+    max-width: 100%;
+    height: 170px;
+    width: 122px;
+    margin:16px;
+}
+.item-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+.quantity-control{
+    display: flex;
+    width: 117px;
+    height: 38.64px;
+    border-radius: 24px;
+    background: rgb(255, 255, 255);
+    justify-content: space-between;
+    align-items: center;
+    margin-top:62px;
+}
+
+
+.quantity-control button{
+    background-color: #ff8100;;
+    color: #F3F3F3;
+    border:none;
+    font-size: 16px;
+    align-items: center;
+    font-weight: bold;
+     width: 38.64px;
+     height: 38.64px;
+     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+
+
+}
+.remove-item{
+    margin-left: 15px;
+    background-color: #ff8100;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 799px;
+    
+    
+}
+.remove-item img{
+    width: 48px; 
+    height: 46px
+}
+
+.product-price {
+    text-align: right;
+    font-size: 32px;
+    font-weight: bold;
+    color: #272635;
+    position: absolute; 
+    bottom: 32px;
+    right: 16px; 
+    
+  
+ }
