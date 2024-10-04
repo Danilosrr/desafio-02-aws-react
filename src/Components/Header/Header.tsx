@@ -1,16 +1,16 @@
-import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { RxExit, RxMagnifyingGlass,RxHamburgerMenu } from "react-icons/rx";
+import { RxExit,RxHamburgerMenu } from "react-icons/rx";
 import { BsCart3 } from "react-icons/bs";
 import logo from "../../Assets/UOL.png";
 import "./Header.css";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   const location = useLocation();
 
   function verifyUrl() {
-    if (location.pathname.includes("comic")) return "comic";
-    else return "character";
+    if (location.pathname.includes("comic")) return "comics";
+    else return "characters";
   }
 
   return (
@@ -20,9 +20,9 @@ export default function Header() {
         <h1>
           <b>UOL</b>Comics
         </h1>
-        <MobileButtons />
+        <MobileButtons/>
       </section>
-      <SearchBar />
+      <SearchBar  url={verifyUrl()} />
       <DesktopButtons url={verifyUrl()} />
     </header>
   );
@@ -31,11 +31,11 @@ export default function Header() {
 function DesktopButtons({ url }: Readonly<{ url: string }>) {
   return (
     <section className="headerButtons">
-      <Link className={url == "comic" ? "link active" : "link"} to="/comics">
+      <Link className={url === "comics" ? "link active" : "link"} to="/comics">
         Quadrinhos
       </Link>
       <Link
-        className={url == "character" ? "link active" : "link"}
+        className={url === "characters" ? "link active" : "link"}
         to="/characters"
       >
         Personagens
@@ -60,33 +60,6 @@ function MobileButtons() {
         <BsCart3 />
       </div>
       <RxHamburgerMenu />
-    </section>
-  );
-}
-
-function SearchBar() {
-  const searchInput = useRef<HTMLInputElement>(null);
-
-  function handleBarClick() {
-    searchInput.current?.focus();
-    //a concluir
-  }
-
-  function handleSearch(e: React.MouseEvent<HTMLButtonElement>) {
-    e.stopPropagation();
-    //a concluir
-  }
-
-  return (
-    <section className="searchBar" onClick={handleBarClick}>
-      <button onClick={handleSearch}>
-        <RxMagnifyingGlass />
-      </button>
-      <input
-        ref={searchInput}
-        type="text"
-        placeholder="Digite aqui por título..."
-      />
     </section>
   );
 }
