@@ -1,42 +1,50 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // Importando `useNavigate` aqui
 import { RxChevronLeft } from "react-icons/rx";
 import { request } from "../../Api/api";
 import loading from "../../Assets/loading.gif";
-import './CharacterDetails.css'
+import "./CharacterDetails.css";
 
 interface Character {
   id: number;
   name: string;
   description: string;
   thumbnail: { extension: string; path: string };
-  comics: { items: { name: string; resourceURI: string }[] };
-  series: { items: { name: string; resourceURI: string }[] };
   stories: { items: { name: string; resourceURI: string }[] };
-  events: { items: { name: string; resourceURI: string }[] };
-  urls: { type: string; url: string }[];
+  series: { items: { name: string; resourceURI: string }[] };
   modified: string;
+}
+
+interface Comic {
+  id: number;
+  title: string;
+  thumbnail: { extension: string; path: string };
 }
 
 export default function CharacterDetails() {
   const { id } = useParams();
+  const navigate = useNavigate(); 
   const [noCharacter, setNoCharacter] = useState<boolean>(false);
   const [character, setCharacter] = useState<Character | null>(null);
-  const [comics, setComics] = useState<Character[] | null>(null);
+  const [characterComics, setCharacterComics] = useState<Comic[]>([]);
+  const [moreComics, setMoreComics] = useState<Comic[]>([]);
 
   async function getData() {
     try {
-      const character = await request(`/v1/public/characters/${id}`);
-      const comics = await request(
-        `/v1/public/characters/${id}/comics?limit=20`
+      const characterData = await request(`/v1/public/characters/${id}`);
+      const comicsData = await request(
+        `/v1/public/characters/${id}/comics?limit=3`
       );
-      /*const comics = await request(`/v1/public/characters/${id}/comics?limit=20`); */
 
-      setCharacter(character.data.results[0] as Character);
-      setComics(comics.data.results.map((c: Character) => c as Character));
+     
+      const additionalComicsData = await request(`/v1/public/comics?limit=20`);
+
+      setCharacter(characterData.data.results[0] as Character);
+      setCharacterComics(comicsData.data.results.map((c: Comic) => c));
+      setMoreComics(additionalComicsData.data.results.map((c: Comic) => c));
     } catch (error) {
       setNoCharacter(true);
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -44,84 +52,92 @@ export default function CharacterDetails() {
     getData();
   }, []);
 
+  const handleBackButton = () => {
+    navigate(-1); 
+  };
+
   return (
     <>
       <main className="main">
         {character ? (
           <div className="container">
             <nav>
-              <RxChevronLeft color="#FF8100" />
-              <a href="/characters" style={{ textDecoration: 'none' }}>Voltar</a>
+              <RxChevronLeft
+                color="#FF8100"
+                onClick={handleBackButton}
+                style={{ cursor: "pointer" }}
+              />
+              <a
+                href="/characters"
+                style={{ textDecoration: "none" }}
+                onClick={handleBackButton}
+              >
+                Voltar
+              </a>
             </nav>
             <div className="character">
               <img
                 className="cover"
-                src={
-                  character.thumbnail.path + "." + character.thumbnail.extension
-                }
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                 alt="character cover"
               />
-              <aside>
-                <section className="title">
-                  <h2>{character.name}</h2>
-                </section>
-                <div className="details">
-                  <article>
-                    <h3>Criado</h3>
-                    <p>{new Date(character.modified).getFullYear()}</p>
-                  </article>
-                  <article>
-                    <h3>Número de Histórias</h3>
-                    <p>{character.stories.items.length}</p>
-                  </article>
-                  <article>
-                    <h3>Número de Séries</h3>
-                    <p>{character.series.items.length}</p>
-                  </article>
-                  <article>
-                    <h3>Descrição</h3>
-                    <p>
-                      {character.description || "No description available."}
-                    </p>
-                  </article>
+              <aside className="character-info">
+                <h2>{character.name.toUpperCase()}</h2>
+                <div className="character-details">
+                  <p>
+                    <strong>Criado em:</strong>
+                    {new Date(character.modified).getFullYear()}
+                  </p>
+                  <p>
+                    <strong>Histórias:</strong> {character.stories.items.length}
+                  </p>
+                  <p>
+                    <strong>Núm. de séries:</strong>{" "}
+                    {character.series.items.length}
+                  </p>
                 </div>
+                <p>
+                  <strong>Descrição:</strong><br />{" "}
+                  {character.description || "No description available."}
+                </p>
               </aside>
             </div>
+
+            {/* Seção Histórias */}
             <div className="relatedComics">
-              
               <h3>Histórias</h3>
-              <div className="row">
-                {comics?.slice(0, 3).map((c) => (
-                  <figure className="thumbnail" key={c.id}>
-                    <img
-                      src={
-                        c.thumbnail.path +
-                        "/portrait_medium" +
-                        "." +
-                        c.thumbnail.extension
-                      }
-                      alt={c.name}
-                    />
-                    <b>{c.name}</b>
-                  </figure>
-                ))}
-              </div>
+              {characterComics.length > 0 ? (
+                <div className="comics-grid">
+                  {characterComics.map((comic) => (
+                    <figure className="thumbnail" key={comic.id}>
+                      <a href={`/comics/${comic.id}`}>
+                        <img
+                          src={`${comic.thumbnail.path}/portrait_medium.${comic.thumbnail.extension}`}
+                          alt={comic.title}
+                        />
+                        <b>{comic.title}</b>
+                      </a>
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <p>Nenhuma história encontrada.</p>
+              )}
             </div>
-            <div className="more-works">
+
+            {/* Seção Mais Obras */}
+            <div className="more-comics">
               <h3>Mais Obras</h3>
-              <div className="comics-container">
-                {comics?.map((c) => (
-                  <figure className="thumbnail" key={c.id}>
-                    <img
-                      src={
-                        c.thumbnail.path +
-                        "/portrait_medium" +
-                        "." +
-                        c.thumbnail.extension
-                      }
-                      alt={c.name}
-                    />
-                    <b>{c.name}</b>
+              <div className="comics-scroll-container">
+                {moreComics.map((comic) => (
+                  <figure className="thumbnail" key={comic.id}>
+                    <a href={`/comics/${comic.id}`}>
+                      <img
+                        src={`${comic.thumbnail.path}/portrait_medium.${comic.thumbnail.extension}`}
+                        alt={comic.title}
+                      />
+                      <b>{comic.title}</b>
+                    </a>
                   </figure>
                 ))}
               </div>
@@ -130,7 +146,7 @@ export default function CharacterDetails() {
         ) : (
           <div className="loader">
             {noCharacter ? (
-              <h4>Character not found</h4>
+              <h4>Personagem não encontrado</h4>
             ) : (
               <img src={loading} alt="loading" />
             )}

@@ -1,11 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
 
-.main {
-  font-family: "Sofia Sans", sans-serif;
-  line-height: 130%;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Sofia Sans";
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaçamento entre as seções */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+nav a {
+  margin-left: 8px;
+  color: #ff8100;
+  text-decoration: none;
+}
+
+/* Character details */
 .character {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -13,68 +39,111 @@
   gap: 36px;
 }
 
-.character img.cover {
+.cover {
+  width: 280px;
+  height: 402.5px;
+  border-radius: 55px 0px 55px 0px;
+  opacity: 0px;
   box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
-  max-width: 320px;
 }
 
-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+.character-info {
+  margin-top: 15px;
 }
-
-.title {
-  display: grid;
-  padding: 12px 0;
-  gap: 8px;
-  font-size: 18px;
+.character-info h2 {
+  font-size: 20px;
   font-weight: 800;
+  line-height: 24px;
   text-align: center;
 }
 
-.title p {
-  color: #FF8100;
-}
-
-.details .row{
-  display: flex; /* Updated to display flexbox for side-by-side articles */
-  flex-direction: row; /* Articles arranged horizontally */
-  justify-content: space-between; /* Articles evenly distributed */
-  align-items: center; /* Articles vertically aligned */
-  gap: 24px;
-}
-
-.details article {
-  max-width: 200px;
-  font-size: 16px;
-  font-weight: 700;
-  /* Removed borders and paddings to prevent line breaks */
-}
-
-.details article h3 {
-  color: #BABABA;
-}
-
-
-
-
-
-.relatedComics {
-  gap: 16px;
-  padding: 24px 0;
-  position: relative;
-}
-
-.relatedComics h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 24px 0;
-}
-
-.relatedComics .row {
+.character-details {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  width: 100%; /* Added width to constrain comics within the container */
+  justify-content: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.character-details p {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.relatedComics,
+.more-comics {
+  width: 388px;
+  height: 180.11px;
+  margin-bottom: 20px;
+}
+
+.comics-scroll-container {
+  display: flex;
+  overflow-x: auto; /* Permite rolagem horizontal */
+  padding-bottom: 10px; /* Espaçamento inferior */
+  scroll-snap-type: x mandatory; /* Habilita o comportamento de snap */
+  scrollbar-width: thin; /* Firefox: Barra de rolagem fina */
+  -ms-overflow-style: -ms-autohiding-scrollbar; /* IE e Edge: Ocultar barra de rolagem */
+  padding: 10px;
+  scroll-snap-align: start;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.comics-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(120px, 1fr)
+  ); /* Responsive grid */
+  gap: 10px;
+}
+
+/* Modify styles for larger screens */
+@media (min-width: 768px) {
+  .main {
+    padding: 40px;
+  }
+
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav {
+    justify-content: flex-start;
+  }
+
+  .character {
+    flex-direction: row;
+  }
+
+  .character-info {
+    margin-left: 20px;
+  }
+
+  .cover {
+    box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
+    max-width: 320px;
+  }
+
+  .relatedComics,
+  .more-comics {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Comics grid for desktop */
+  .comics-grid {
+    grid-template-columns: repeat(4, 1fr); /* Four columns on larger screens */
+  }
+}
+
+/* Footer styles */
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin-top: 20px;
 }
