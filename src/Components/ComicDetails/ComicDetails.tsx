@@ -63,7 +63,8 @@ export default function ComicDetails() {
           <div className="comic">
             <img
               className="cover"
-              src={comic.images[0].path + "." + comic.images[0].extension}
+              src={comic.images.length?`${comic.images[0].path} .${comic.images[0].extension}`:
+              `${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
               alt="comic cover"
             />
             <aside>
