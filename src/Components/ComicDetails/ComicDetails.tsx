@@ -17,22 +17,32 @@ interface Details {
   characterComics: Comic[];
 }
 
+const initialState = {
+  comic: null,
+  comics: [],
+  character: null,
+  characters: [],
+  characterComics: [],
+}
+
 export default function ComicDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const {addItem} = useCar();
   const [loading, setLoading] = useState(true);
-  const [details, setDetails] = useState<Details>({
-    comic: null,
-    comics: [],
-    character: null,
-    characters: [],
-    characterComics: [],
-  });
+  const [refresh, setRefresh] = useState(0)
+  const [details, setDetails] = useState<Details>(initialState);
 
   function handleNavigate() {
-    navigate(-1);
+    navigate("./../");
+  }
+
+  function redirect(url: string) {
+    setLoading(true)
+    navigate(url);
+    setRefresh(refresh+1);
+    console.log(refresh)
   }
 
   function handleBuy(now?: boolean) {
@@ -61,7 +71,7 @@ export default function ComicDetails() {
 
         console.log(characters)
         const data = {
-          ...details,
+          ...initialState,
           comic: comic.data.results[0],
           comics: comics.data.results,
           characters: characters.data.results,
@@ -76,7 +86,7 @@ export default function ComicDetails() {
         )
 
         const data = {
-          ...details,
+          ...initialState,
           character: character.data.results[0],
           comics: comics.data.results,
           characterComics: characterComics.data.results,
@@ -84,7 +94,6 @@ export default function ComicDetails() {
         setDetails(data);
       }
     } catch (error) {
-      setDetails({ ...details });
       console.log(error);
     } finally{
       setLoading(false);
@@ -92,12 +101,13 @@ export default function ComicDetails() {
   }
 
   useEffect(() => {
+    console.log('refresh')
     getData();
-  }, []);
+  }, [refresh]);
 
   if (!loading) {
     const comicCover = details.comic?.images.length ? `${details.comic.images[0].path}.${details.comic.images[0].extension}`:`${details.comic?.thumbnail.path}/portrait_uncanny.${details.comic?.thumbnail.extension}`
-    const characterCover = `${details.character?.thumbnail.path}.${details.character?.thumbnail.extension}`
+    const characterCover = `${details.character?.thumbnail.path}/portrait_incredible.${details.character?.thumbnail.extension}`
 
     return (
       <main className="mainDetails">
@@ -109,7 +119,7 @@ export default function ComicDetails() {
             </nav>
             <div className="comic">
               <img
-                className="cover"
+                className={details.comic?"cover":"coverBorder"}
                 src={details.comic?comicCover:characterCover}
                 alt="comic cover"
               />
@@ -126,15 +136,19 @@ export default function ComicDetails() {
                       <h3>Personagens da obra</h3>
                       <div className="row">
                         {details.characters?details.characters.map((c) => {
-                          return <Thumbnail key={c.id} name={c.name} img={c.thumbnail} format="standard_medium" round/>;
+                          return <div key={c.id} onClick={()=>{redirect(`/characters/${c.id}`)}}>
+                            <Thumbnail name={c.name} img={c.thumbnail} format="standard_medium" round/>
+                          </div>
                         }):<p>Nenhum Personagem</p>}
                       </div>
                     </>:
                     <>
                       <h3>Histórias</h3>
                       <div className="row">
-                        {details.characterComics.map((c)=>{
-                          return <Thumbnail key={c.id} name={c.title} img={c.thumbnail} format="portrait_medium" round={false}/>;
+                        {details.characterComics.map((c) => {
+                          return <div key={c.id} onClick={()=>{redirect(`/comics/${c.id}`)}}>
+                            <Thumbnail name={c.title} img={c.thumbnail} format="portrait_medium" round={false}/>
+                          </div>
                         })}
                       </div>
                     </>
@@ -159,18 +173,20 @@ export default function ComicDetails() {
               <div className="row">
                 {details.comics?.map((c) => {
                   return (
-                    <figure className="thumbnail" key={c.id}>
-                      <img
-                        src={
-                          c.thumbnail.path +
-                          "/portrait_medium" +
-                          "." +
-                          c.thumbnail.extension
-                        }
-                        alt={c.title}
-                      />
-                      <b>{c.title}</b>
-                    </figure>
+                    <div key={c.id} onClick={()=>{redirect(`/comics/${c.id}`)}}>
+                      <figure className="thumbnail">
+                        <img
+                          src={
+                            c.thumbnail.path +
+                            "/portrait_medium" +
+                            "." +
+                            c.thumbnail.extension
+                          }
+                          alt={c.title}
+                        />
+                        <b>{c.title}</b>
+                      </figure>
+                    </div>
                   );
                 })}
               </div>

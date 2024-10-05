@@ -20,6 +20,7 @@ function App() {
       <CharacterContext>
         <CarProvider>
           <Routes>
+            <Route path="/" element={<LoginForm />} />
             <Route path="/signupform" element={<SignUpForm />} />
             <Route path="/comics" element={<ComicHome />} />
             <Route path="/comics/:id" element={<ComicDetailsPage />} />
