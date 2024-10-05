@@ -69,7 +69,7 @@ function DesktopButtons({
           Personagens
         </Link>
         <div className="cartIcon">
-          {cartItems.length ? <div className="dot" /> : <></>}
+          {carItems.length ? <div className="dot" /> : <></>}
           <BsCart3 />
         </div>
         <button onClick={logout}>
