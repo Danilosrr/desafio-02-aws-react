@@ -15,7 +15,7 @@ const LoginForm: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const storedUser = localStorage.getItem(email);
+    const storedUser = localStorage.getItem('userData');
     if (!storedUser) {
         alert('Usuário não encontrado. Verifique o email ou cadastre-se.');
         return;

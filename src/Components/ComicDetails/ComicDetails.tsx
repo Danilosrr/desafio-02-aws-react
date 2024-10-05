@@ -35,7 +35,7 @@ export default function ComicDetails() {
   const [details, setDetails] = useState<Details>(initialState);
 
   function handleNavigate() {
-    navigate(-1);
+    navigate("./../");
   }
 
   function redirect(url: string) {
