@@ -1,9 +1,12 @@
 import React from "react";
 import './StylesCar/EmptyCar.css'
 import cartIcon from './img/icon-shopping-cart.svg'
+import Header from "../Header/Header";
 
 const EmptyCar: React.FC = ()=>{
     return(
+        <>
+        <Header />
     <div className="all" >
         <h1 className="h1">Meu Carrinho</h1>
         <div className="img-text">
@@ -12,6 +15,7 @@ const EmptyCar: React.FC = ()=>{
             <p className="adicione">Adicione alguns itens ao seu carrinho!</p>
         </div>
     </div>
+    </>
     );
 }
 export default EmptyCar;

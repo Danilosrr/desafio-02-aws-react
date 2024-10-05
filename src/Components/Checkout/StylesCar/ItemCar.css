@@ -10,9 +10,17 @@
 }
 .car h1{
     text-align: center;
-    margin-top: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
     font-size: 64px;
+    font-weight: bold;
     
+    
+}
+.title{
+    font-size: 32px;
+    margin-bottom:64px;
+    margin-top: 32px;
 }
 .Car-item{
     display: flex;
@@ -49,7 +57,7 @@
     background: rgb(255, 255, 255);
     justify-content: space-between;
     align-items: center;
-    margin-top:62px;
+    margin-bottom:61.34px;
 }
 
 
@@ -71,7 +79,7 @@
 .remove-item{
     margin-left: 15px;
     background-color: #ff8100;
-    border-radius: 8px;
+    border-radius: 0px 8px;
     padding: 8px;
     cursor: pointer;
     position: absolute;
