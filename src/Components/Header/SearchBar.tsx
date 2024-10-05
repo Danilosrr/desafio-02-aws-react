@@ -28,15 +28,14 @@ export default function SearchBar({ url }: Readonly<{ url: string }>) {
           `/v1/public/comics?titleStartsWith=${searchInput.current?.value}&limit=20`
         );
         setComics(searchData.data.results);
-        navigate("/comics");
+        navigate(`/comics?titleStartsWith=${searchInput.current.value}`);
       }
       if (queryValid && url==='characters') {
         const searchData = await request(
           `/v1/public/characters?nameStartsWith=${searchInput.current?.value}&limit=20`
         );
         setCharacter(searchData.data.results);
-        console.log(searchData.data.results)
-        navigate("/characters");
+        navigate(`/comics?nameStartsWith=${searchInput.current.value}`);
       }
     } catch (error) {
       console.log(error);

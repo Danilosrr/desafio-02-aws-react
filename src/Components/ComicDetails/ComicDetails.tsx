@@ -93,7 +93,6 @@ export default function ComicDetails() {
 
   useEffect(() => {
     getData();
-    console.log(details.comic);
   }, []);
 
   if (!loading) {

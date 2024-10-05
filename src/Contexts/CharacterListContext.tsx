@@ -29,15 +29,15 @@ const CharacterContext: React.FC<CharacterContextProps> = ({ children }) => {
 
   const fetchResponse = async (newOffset: number) => {
     const publicKey = process.env.REACT_APP_API_KEY;
-    const hash = "73d1299302e594ca3212e73052b13d80"
+    const hash = process.env.REACT_APP_API_HASH;
 
     try {
       const response = await axios.get(
         "https://gateway.marvel.com//v1/public/characters",
         {
           params: {
+            ts: 1,
             apikey: publicKey,
-            ts: 3,
             hash: hash,
             offset: newOffset,
             limit: 20,
