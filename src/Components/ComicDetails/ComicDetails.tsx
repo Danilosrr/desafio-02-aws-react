@@ -8,6 +8,7 @@ import { Character } from "../../types/character-types";
 import { Comic } from "../../types/comic-type";
 import "./ComicDetails.css";
 import { useCar } from "../Checkout/CheckoutLogic";
+import LoaadingScreen from "../ComicList/LoaadingScreen";
 
 interface Details {
   comic: Comic | null;
@@ -134,13 +135,13 @@ export default function ComicDetails() {
                   {details.character?<CharacterRows character={details.character}/>:<></>}
                   <article className="thumbnails">
                   {details.comic?<>
-                      <h3>Personagens da obra</h3>
+                      <h3>{details.characters.length?"Personagens da obra":""}</h3>
                       <div className="row">
-                        {details.characters?details.characters.map((c) => {
+                        {details.characters.map((c) => {
                           return <div key={c.id} onClick={()=>{redirect(`/characters/${c.id}`)}}>
                             <Thumbnail  name={c.name} img={c.thumbnail} format={{type:"character",format:"standard_medium"}} round/>
                           </div>
-                        }):<p>Nenhum Personagem</p>}
+                        })}
                       </div>
                     </>:
                     <>
@@ -192,11 +193,7 @@ export default function ComicDetails() {
     );
   } else {
     return (
-      <main className="mainDetails">
-        <div className="loader">
-          <img src={loader} alt="loading" />
-        </div>
-      </main>
+      <LoaadingScreen/>
     );
   }
 }
