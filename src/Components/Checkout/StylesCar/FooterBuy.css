@@ -1,4 +1,11 @@
-
+@keyframes dissolve {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 .footer{
     position:fixed;
     bottom:0;
@@ -8,10 +15,11 @@
     justify-content: center;
     padding:10px 0;
     background-color: white;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0,0.1);
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
     background-color: #fafffd;
-    border-top: 1px solid #bababa;
     border-bottom: none;
+    border-top: 1px solid #bababa;
+   
 }
 .button-container{
     display:flex;
