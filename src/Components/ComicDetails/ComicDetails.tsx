@@ -3,12 +3,12 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { RxChevronLeft } from "react-icons/rx";
 import { MdAddShoppingCart } from "react-icons/md";
 import { request } from "../../Api/api";
-import loader from "../../Assets/loading.gif";
 import { Character } from "../../types/character-types";
 import { Comic } from "../../types/comic-type";
 import "./ComicDetails.css";
 import { useCar } from "../Checkout/CheckoutLogic";
 import LoaadingScreen from "../ComicList/LoaadingScreen";
+import useToastContext from "../../Hooks/useToastContext";
 
 interface Details {
   comic: Comic | null;
@@ -28,6 +28,7 @@ const initialState = {
 
 export default function ComicDetails() {
   const { id } = useParams();
+  const {notify} = useToastContext();
   const navigate = useNavigate();
   const location = useLocation();
   const {addItem} = useCar();
@@ -57,6 +58,7 @@ export default function ComicDetails() {
         quantity: 1
       }
       addItem(item);
+      notify(`${item.title} adicionado ao carrinho`,true)
       if (now) navigate("/checkout");
     }
   }
