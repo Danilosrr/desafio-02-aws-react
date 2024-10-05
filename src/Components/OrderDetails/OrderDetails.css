@@ -1,7 +1,8 @@
-main {
+.mainOrder {
     padding: 0 16px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-family: "Sofia Sans", sans-serif;
     line-height: 130%;
     gap: 64px;
@@ -74,7 +75,7 @@ main {
 }
 
 @media (min-width: 376px) {
-    .circle {
+    .mainOrder .circle {
         margin-left: 80px;
     }
 }

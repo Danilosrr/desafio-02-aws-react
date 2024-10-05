@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext, ReactNode } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Comic } from "../types/comic-type";
+import { useSearchParams } from "react-router-dom";
 
 interface ComicListContextType {
   comics: Comic[];
@@ -14,7 +15,7 @@ interface ComicListContextType {
 }
 
 export const ComicListContext = createContext<ComicListContextType | null>(
-  null,
+  null
 );
 
 interface ComicContextProps {
@@ -22,27 +23,38 @@ interface ComicContextProps {
 }
 
 const ComicContext: React.FC<ComicContextProps> = ({ children }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [comics, setComics] = useState<Comic[]>([]);
   const [error, setError] = useState("");
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const fetchResponse = async (newOffset: number) => {
+    const titleStartsWith = searchParams.get("titleStartsWith");
     const publicKey = process.env.REACT_APP_API_KEY;
     const hash = process.env.REACT_APP_API_HASH;
+
+    const params = {
+      apikey: publicKey,
+      ts: 1,
+      hash: hash,
+      offset: newOffset,
+      limit: 20,
+    };
+
     try {
-      const response = await axios.get(
-        "https://gateway.marvel.com/v1/public/comics",
-        {
-          params: {
-            apikey: '01e97ff8c99fed1b6901f5a4faac2538',
-            ts: 1,
-            hash: '7e4cc8da7d877a04bd3e1ef707b20f55',
-            offset: newOffset,
-            limit: 20,
-          },
-        },
-      );
+      let response: AxiosResponse<any, any>;
+      if (titleStartsWith) {
+        response = await axios.get(
+          "https://gateway.marvel.com/v1/public/comics",
+          { params: { ...params, titleStartsWith } }
+        );
+      } else {
+        response = await axios.get(
+          "https://gateway.marvel.com/v1/public/comics",
+          { params: { ...params } }
+        );
+      }
 
       setComics((prevComics) => [...prevComics, ...response.data.data.results]);
     } catch (err: unknown) {

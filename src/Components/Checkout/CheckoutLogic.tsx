@@ -1,4 +1,4 @@
-import React, {createContext,useContext,useState} from "react";
+import React, {createContext,useContext,useState,useEffect } from "react";
 
 interface Item {
     id: number;
@@ -15,20 +15,26 @@ interface CarContextType{
 }
 const CarContext = createContext<CarContextType | undefined>(undefined);
 export const CarProvider : React.FC <{children : React.ReactNode}> =({children})=>{
-    const [carItems, setCarItems] = useState<Item[]>([]);
-
+    const [carItems, setCarItems] = useState<Item[]>(() => {
+        const storedItems = localStorage.getItem('cartItems');
+        return storedItems ? JSON.parse(storedItems) : [];
+    });
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(carItems));
+    }, [carItems]);
     const addItem = (item :Item)=>{
         setCarItems(prevItems=>{
             const existingItem = prevItems.find(i=>i.id ===item.id);
             if(existingItem) {
                 return prevItems.map(i=>
-                    i.id === item.id? {...i, quantity: i.quantity + item.quantity+1} : i
+                    i.id === item.id? {...i, quantity: i.quantity + item.quantity} : i
                 );
         }
         return[...prevItems,{...item,quantity : 1}];
     });
     };
     const removeItem = (id: number)=>{
+       
         setCarItems(prevItems=>prevItems.filter(item=>item.id!== id));
     };
     return(
@@ -44,4 +50,5 @@ export const useCar = ()=> { //hook
         throw new Error('useCar must be used within a CartProvider');
     }
     return context;
+    
 };

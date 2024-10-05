@@ -3,9 +3,9 @@ import axios from "axios";
 const config = {
   baseURL: "http://gateway.marvel.com",
   params: {
-    apikey: "01e97ff8c99fed1b6901f5a4faac2538",
+    apikey: process.env.REACT_APP_API_KEY,
     ts: 1,
-    hash: "7e4cc8da7d877a04bd3e1ef707b20f55",
+    hash: process.env.REACT_APP_API_HASH,
   },
 };
 

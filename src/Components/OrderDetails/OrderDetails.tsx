@@ -17,7 +17,7 @@ export default function OrderDetails() {
   };
 
   return (
-    <main>
+    <main className="mainOrder">
       <section className="title">
         <h2>Compra realizada</h2>
         <p>Agora é so aguardar que logo suas comics chegam aí!</p>
