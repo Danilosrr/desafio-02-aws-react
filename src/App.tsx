@@ -5,17 +5,20 @@ import ComicList from './Pages/ComicHome';
 import ComicHome from "./Pages/ComicHome";
 import ComicDetailsPage from './Pages/ComicDetailsPage';
 import OrderDetailsPage from "./Pages/OrderDetails";
-import "./Assets/reset.css";
 import ComicContext from "./Contexts/ComicListContext";
 import CharacterList from './Pages/CharacterHome';
 import LoginForm from './Components/LoginForm/LoginForm';
 import CharacterContext from './Contexts/CharacterListContext';
 import { CarProvider } from './Components/Checkout/CheckoutLogic';
 import ItemCar from './Components/Checkout/ItemCar';
+import ToastProvider from './Contexts/ToastContext';
+import 'react-toastify/dist/ReactToastify.css';
+import "./Assets/reset.css";
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastProvider>
       <ComicContext>
       <CharacterContext>
         <CarProvider>
@@ -33,6 +36,7 @@ function App() {
         </CarProvider>
       </CharacterContext>
       </ComicContext>
+      </ToastProvider>
     </BrowserRouter>
      
   );
