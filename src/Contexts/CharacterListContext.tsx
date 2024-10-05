@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext, ReactNode } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Character } from "../types/character-types";
+import { useSearchParams } from "react-router-dom";
 
 interface CharacterListContextType {
   character: Character[];
@@ -22,30 +23,39 @@ interface CharacterContextProps {
 }
 
 const CharacterContext: React.FC<CharacterContextProps> = ({ children }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [character, setCharacter] = useState<Character[]>([]);
   const [error, setError] = useState("");
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const fetchResponse = async (newOffset: number) => {
+    const nameStartsWith = searchParams.get("nameStartsWith");
     const publicKey = process.env.REACT_APP_API_KEY;
     const hash = process.env.REACT_APP_API_HASH;
 
-    try {
-      const response = await axios.get(
-        "https://gateway.marvel.com//v1/public/characters",
-        {
-          params: {
-            ts: 1,
-            apikey: publicKey,
-            hash: hash,
-            offset: newOffset,
-            limit: 20,
-            
-          },
-        },
-      );
+    const params = {
+      apikey: publicKey,
+      ts: 1,
+      hash: hash,
+      offset: newOffset,
+      limit: 20,
+    };
 
+    try {
+      let response: AxiosResponse<any, any>;
+      if (nameStartsWith) {
+        response = await axios.get(
+          "https://gateway.marvel.com//v1/public/characters",
+          { params: { ...params, nameStartsWith } }
+        );
+      } else {
+        response = await axios.get(
+          "https://gateway.marvel.com//v1/public/characters",
+          { params: { ...params } }
+        );
+      }
+      
       setCharacter((prevCharacter) => [...prevCharacter, ...response.data.data.results]);
     } catch (err: unknown) {
       if (err instanceof Error) {

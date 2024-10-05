@@ -35,7 +35,7 @@ export default function SearchBar({ url }: Readonly<{ url: string }>) {
           `/v1/public/characters?nameStartsWith=${searchInput.current?.value}&limit=20`
         );
         setCharacter(searchData.data.results);
-        navigate(`/comics?nameStartsWith=${searchInput.current.value}`);
+        navigate(`/characters?nameStartsWith=${searchInput.current.value}`);
       }
     } catch (error) {
       console.log(error);

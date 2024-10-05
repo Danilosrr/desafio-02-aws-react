@@ -32,7 +32,7 @@ export default function ComicDetails() {
   });
 
   function handleNavigate() {
-    navigate(`/comics`);
+    navigate(-1);
   }
 
   function handleBuy(now?: boolean) {

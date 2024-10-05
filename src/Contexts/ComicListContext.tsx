@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, ReactNode } from "react";
 import axios, { AxiosResponse } from "axios";
 import { Comic } from "../types/comic-type";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 interface ComicListContextType {
   comics: Comic[];
@@ -23,7 +23,6 @@ interface ComicContextProps {
 }
 
 const ComicContext: React.FC<ComicContextProps> = ({ children }) => {
-  let { results } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const [comics, setComics] = useState<Comic[]>([]);
   const [error, setError] = useState("");
@@ -71,7 +70,7 @@ const ComicContext: React.FC<ComicContextProps> = ({ children }) => {
 
   useEffect(() => {
     fetchResponse(0);
-  }, [results]);
+  }, []);
 
   const handleNew = () => {
     const newOffset = offset + 20;
