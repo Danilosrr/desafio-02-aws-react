@@ -13,9 +13,15 @@
             max-width: 765px;
             gap: 36px;
     
-            .cover {
+            .cover, .coverBorder {
                 box-shadow: 0px 24px 12px 12px rgba(243, 243, 243, 0.75);
+                width: 100%;
                 max-width: 320px;
+
+            }
+
+            .coverBorder {
+                border-radius: 50px 0 50px 0;
             }
         }
     }
@@ -41,9 +47,14 @@
         flex-direction: column;
         align-items: center;
 
-        .cover {
+        .cover, .coverBorder {
             box-shadow: 0px 0px 12px 12px rgba(243, 243, 243, 0.95);
+            width: 100%;
             max-width: 280px;
+        }
+
+        .coverBorder{
+            border-radius: 50px 0 50px 0;
         }
 
         aside {
@@ -74,7 +85,7 @@
     font-family: "Sofia Sans", sans-serif;
     line-height: 130%;
 
-    button:hover, nav:hover{
+    .character:hover, button:hover, nav:hover{
         cursor: pointer;
     }
 
