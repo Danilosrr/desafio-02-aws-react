@@ -1,206 +1,267 @@
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
 
 @media (min-width: 376px) {
-    .header {
-        z-index: 99;
-        position: sticky;
-        top: 0;
+  .header {
+    z-index: 99;
+    position: sticky;
+    top: 0;
         background-color: #FAFFFD;
-        padding: 16px;
-        display: flex;
-        gap: 64px;
-        
-        .link,
-        section,
-        button,
-        input {
-            display: flex;
-            align-items: center;
-            font-size: 18px;
-            font-weight: 400;
-        }
-        
-        box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
-        
-        font-family: "Sofia Sans",
-        sans-serif;
-        line-height: 130%;
-        
-        .mobileButtons{ 
-            display: none;
-        }
+    padding: 16px;
+    display: flex;
+    gap: 64px;
+
+    .link,
+    section,
+    button,
+    input {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 400;
     }
-    
-    .logo {
-        gap: 7.5px;
 
-        h1 {
-            font-size: 36px;
-            font-weight: 800;
-        }
+    box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
 
-        b {
+    font-family: "Sofia Sans", sans-serif;
+    line-height: 130%;
+
+    .mobileButtons {
+      display: none;
+    }
+  }
+
+  .logo {
+    gap: 7.5px;
+
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+    }
+
+    b {
             color: #FF8100;
-        }
-
-        img {
-            width: 48px;
-        }
     }
 
-    .searchBar {
-        gap: 7.5px;
-        padding: 12px;
-        border-radius: 30px;
-        background-color: #F3F3F3;
-        color: #BABABA;
-        width: 100%;
-        min-width: fit-content;
+    img {
+      width: 48px;
+    }
+  }
 
-        input,
-        button {
-            border: none;
-            background-color: transparent;
-        }
+  .searchBar {
+    gap: 7.5px;
+    padding: 12px;
+    border-radius: 30px;
+    background-color: #f3f3f3;
+    color: #bababa;
+    width: 100%;
+    min-width: fit-content;
 
-        input {
-            width: 100%;
-        }
-
-        input:focus {
-            outline: none;
-        }
+    input,
+    button {
+      border: none;
+      background-color: transparent;
     }
 
-    .headerButtons {
-        padding: 9.5px;
-        gap: 16px;
+    input {
+      width: 100%;
+    }
 
-        button {
+    input:focus {
+      outline: none;
+    }
+  }
+
+  .headerButtons {
+    gap: 16px;
+
+    button {
             color: #FAFFFD;
             background-color: #FF8100;
-            padding: 6px 8px;
-            gap: 8px;
-            border-radius: 6px;
-            border: none;
-        }
-
-        .link {
-            text-decoration: none;
-            color: #0c0c0c;
-        }
-
-        .cartIcon {
-            padding: 4px;
-            display: flex;
-            position: relative;
-
-            div {
-                background-color: #FF8100;
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-            }
-        }
-
-        .active {
-            color: #FF8100
-        }
+      padding: 6px 8px;
+      gap: 8px;
+      border-radius: 6px;
+      border: none;
     }
+
+    .link {
+      text-decoration: none;
+      color: #0c0c0c;
+    }
+
+    .cartIcon {
+      padding: 4px;
+      display: flex;
+      position: relative;
+
+      div {
+                background-color: #FF8100;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+    }
+
+    .active {
+            color: #FF8100
+    }
+  }
 }
 
-@media (max-width: 375px) {
-    .header {
-        z-index: 99;
-        position: sticky;
-        top: 0;
+@media (max-width: 1000px) {
+  .header {
+    z-index: 99;
+    position: sticky;
+    top: 0;
         background-color: #FAFFFD;
-        padding: 12px 8px;
-        gap: 18px;
-        display: grid;
+    padding: 12px 8px;
+    gap: 18px;
+    display: grid;
 
-        box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
+    box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
         font-family: "Sofia Sans",
             sans-serif;
-        line-height: 130%;
+    line-height: 130%;
+  }
+  .headerButtons {
+    display: none !important;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    gap: 5px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
     }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        height: fit-content;
-        gap: 5px;
-
-        h1 {
-            font-size: 24px;
-            font-weight: 800;
-        }
-        b {
+    b {
             color: #FF8100;
-        }
-        img {
-            width: 32px;
-            height: 32px;
-        }
-        input,
-        button {
-            display: flex;
-            align-items: center;
-            background-color: transparent;
-        } 
-        .mobileButtons{ 
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            font-size: 24px;
-            gap: 24px;
-
-            .cartIcon {
-                padding: 4px;
-                display: flex;
-                position: relative;
-    
-                div {
-                    background-color: #FF8100;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 50%;
-                }
-            }
-        }
     }
+    img {
+      width: 32px;
+      height: 32px;
+    }
+    input,
+    button {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+    }
+    .mobileButtons {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      font-size: 24px;
+      gap: 24px;
 
-    .searchBar {
+      .cartIcon {
+        padding: 4px;
         display: flex;
-        align-items: center;
-        min-width: fit-content;
-        box-sizing: border-box;
-        height: 32px;
-        padding: 12px;
-        border-radius: 30px;
+        position: relative;
+
+        div {
+                    background-color: #FF8100;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .searchBar {
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+    box-sizing: border-box;
+    height: 32px;
+    padding: 12px;
+    border-radius: 30px;
         background-color: #F3F3F3;
         color: #BABABA;
 
         input, button {
-            border: none;
-            background-color: transparent;
-        }
-        button {
-            color: #BABABA;
-            font-size: 18px;
-        }
-        input:focus {
-            outline: none;
-        }
+      border: none;
+      background-color: transparent;
     }
+    button {
+            color: #BABABA;
+      font-size: 18px;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
 
-    .headerButtons {
-        display: none;
+  .headerButtons {
+    display: none;
+  }
+}
+
+.headerButtons-mobile {
+  gap: 20px;
+  top: 50%;
+  right: 10px;
+  position: absolute;
+  display: flex !important;
+  flex-flow: column;
+  background-color: rgba(234, 228, 228, 0.5);
+  height: 400px;
+  width: 200px;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none !important;
+  
+
+  button {
+    color: #fafffd;
+    background-color: #ff8100;
+    padding: 6px 8px;
+    gap: 8px;
+    border-radius: 6px;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: #0c0c0c;
+    margin-top: 10px;
+  }
+
+  .cartIcon {
+    padding: 4px;
+    display: flex;
+    position: relative;
+
+    div {
+      background-color: #ff8100;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+  }
+
+  .active {
+    color: #ff8100;
+  }
+}
+
+@media (min-width:1001px) {
+    .headerButtons-mobile{
+        display: none!important;
     }
 }
