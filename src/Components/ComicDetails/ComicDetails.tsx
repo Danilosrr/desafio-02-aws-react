@@ -61,10 +61,11 @@ export default function ComicDetails() {
   }
 
   async function getData() {
+    const randomNum = (num:number) => Math.floor(Math.random() * num);
     try {
       if(location.pathname.includes("comics")){
         const comic = await request(`/v1/public/comics/${id}`);
-        const comics = await request(`/v1/public/comics?limit=20`);
+        const comics = await request(`/v1/public/comics?offset=${randomNum(200)}&limit=20`);
         const characters = await request(
           `/v1/public/comics/${id}/characters?limit=3`
         );
@@ -80,7 +81,7 @@ export default function ComicDetails() {
       }
       if(location.pathname.includes("characters")){
         const character = await request(`/v1/public/characters/${id}`);
-        const comics = await request(`/v1/public/comics?limit=20`);
+        const comics = await request(`/v1/public/comics?offset=${randomNum(200)}&limit=20`);
         const characterComics =await request(
           `/v1/public/characters/${id}/comics?limit=3`
         )
@@ -137,7 +138,7 @@ export default function ComicDetails() {
                       <div className="row">
                         {details.characters?details.characters.map((c) => {
                           return <div key={c.id} onClick={()=>{redirect(`/characters/${c.id}`)}}>
-                            <Thumbnail name={c.name} img={c.thumbnail} format="standard_medium" round/>
+                            <Thumbnail  name={c.name} img={c.thumbnail} format={{type:"character",format:"standard_medium"}} round/>
                           </div>
                         }):<p>Nenhum Personagem</p>}
                       </div>
@@ -147,8 +148,8 @@ export default function ComicDetails() {
                       <div className="row">
                         {details.characterComics.map((c) => {
                           return <div key={c.id} onClick={()=>{redirect(`/comics/${c.id}`)}}>
-                            <Thumbnail name={c.title} img={c.thumbnail} format="portrait_medium" round={false}/>
-                          </div>
+                            <Thumbnail  name={c.title} img={c.thumbnail} format={{type:"thumbnail",format:"portrait_medium"}} round={false}/>
+                      </div>
                         })}
                       </div>
                     </>
@@ -174,18 +175,7 @@ export default function ComicDetails() {
                 {details.comics?.map((c) => {
                   return (
                     <div key={c.id} onClick={()=>{redirect(`/comics/${c.id}`)}}>
-                      <figure className="thumbnail">
-                        <img
-                          src={
-                            c.thumbnail.path +
-                            "/portrait_medium" +
-                            "." +
-                            c.thumbnail.extension
-                          }
-                          alt={c.title}
-                        />
-                        <b>{c.title}</b>
-                      </figure>
+                      <Thumbnail  name={c.title} img={c.thumbnail} format={{type:"thumbnail",format:"portrait_medium"}} round={false}/>
                     </div>
                   );
                 })}
@@ -211,10 +201,10 @@ export default function ComicDetails() {
   }
 }
 
-function Thumbnail({ name,img,format,round }: Readonly<{ name: string,img:{path:string, extension:string},format:string, round:boolean }>) {
+function Thumbnail({ name,img,format,round }: Readonly<{ name: string,img:{path:string, extension:string},format:{format:string, type:string}, round:boolean }>) {
   return (
-    <figure className="character" key={name}>
-      <img src={img.path +`/${format}.`+img.extension} alt="thumbnail" className={round?'round':''}/>
+    <figure className={format.type} key={name}>
+      <img src={img.path +`/${format.format}.`+img.extension} alt="thumbnail" className={round?'round':''}/>
       <b>{name}</b>
     </figure>
   )
