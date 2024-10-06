@@ -2,20 +2,16 @@ import { IoIosPin, IoIosClock } from "react-icons/io";
 import { BsCurrencyDollar } from "react-icons/bs";
 import "./OrderDetails.css";
 import { useNavigate } from "react-router-dom";
+import { Shipping } from "../Checkout/CheckoutLogic";
 
-export default function OrderDetails() {
+
+export const OrderDetails:React.FC<Shipping> = ({ address, paymentMethod, time }:Shipping) => {
   const navigate = useNavigate();
 
   function handleNavigate(){
     navigate("/comics")
   }
   
-  const mock = {
-    shipping: 3,
-    payment: "Cartão de crédito",
-    address: "Rua João Daniel Martinelli, 102-Farrapos - Porto Alegre - RS",
-  };
-
   return (
     <main className="mainOrder">
       <section className="title">
@@ -28,7 +24,7 @@ export default function OrderDetails() {
             <IoIosPin />
           </div>
           <span>
-            Entrega em <b>{mock.address}</b>
+            Entrega em <b>{address}</b>
           </span>
         </article>
         <article>
@@ -36,7 +32,7 @@ export default function OrderDetails() {
             <IoIosClock />
           </div>
           <span>
-            Entrega em <b>{mock.shipping} dias</b>
+            Previsão de entrega <b>{time} dias</b>
           </span>
         </article>
         <article>
@@ -45,7 +41,7 @@ export default function OrderDetails() {
           </div>
           <span>
             Pagamento na entrega
-            <b>{mock.payment}</b>
+            <b>{paymentMethod}</b>
           </span>
         </article>
       </section>

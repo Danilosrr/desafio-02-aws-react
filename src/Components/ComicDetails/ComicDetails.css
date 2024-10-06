@@ -36,7 +36,6 @@
         padding: 16px 8px;
 
         nav {
-            margin-top: 12px;
             font-size: 18px;
             font-weight: 700;
         }
@@ -91,7 +90,7 @@
 
     nav {
         display: flex;
-        margin: 24px 0 24px;
+        margin: 0 0 24px;
         font-weight: 800;
         font-size: 18px;
         gap: 6px;
