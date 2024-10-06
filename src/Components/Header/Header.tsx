@@ -1,28 +1,24 @@
-import { useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { RxExit, RxMagnifyingGlass } from "react-icons/rx";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { RxExit,RxHamburgerMenu } from "react-icons/rx";
 import { BsCart3 } from "react-icons/bs";
 import logo from "../../Assets/UOL.png";
 import "./Header.css";
+import SearchBar from "./SearchBar";
+import { useCar } from "../Checkout/CheckoutLogic";
 
 export default function Header() {
-  const searchInput = useRef<HTMLInputElement>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  function verifyUrl(value: string):string {
-    if (location.pathname.includes(value)) {
-      return "active";
-    } else return "inactive";
+  function handleLogout() {
+    localStorage.removeItem("userData");
+    navigate('/');
   }
+  
 
-  function handleBarClick() {
-    searchInput.current?.focus();
-    //a concluir
-  }
-
-  function handleSearch(e: React.MouseEvent<HTMLButtonElement>) {
-    e.stopPropagation();
-    //a concluir
+  function verifyUrl() {
+    if (location.pathname.includes("comic")) return "comics";
+    else return "characters";
   }
 
   return (
@@ -32,33 +28,50 @@ export default function Header() {
         <h1>
           <b>UOL</b>Comics
         </h1>
+        <MobileButtons/>
       </section>
-      <section className="searchBar" onClick={handleBarClick}>
-        <button onClick={handleSearch}>
-          <RxMagnifyingGlass />
-        </button>
-        <input
-          ref={searchInput}
-          type="text"
-          placeholder="Digite aqui por título..."
-        />
-      </section>
-      <section className="headerButtons">
-        <Link className={`link ${verifyUrl('comic')}`} to="/">
-          Quadrinhos
-        </Link>
-        <Link className={`link ${verifyUrl('characters')}`} to="/">
-          Personagens
-        </Link>
-        <div className="cartIcon">
-          {true ? <div className="dot" /> : <></> /*alterar depois*/}
-          <BsCart3 />
-        </div>
-        <button>
-          <RxExit />
-          Sair
-        </button>
-      </section>
+      <SearchBar  url={verifyUrl()} />
+      <DesktopButtons url={verifyUrl()} logout={handleLogout}/>
     </header>
+  );
+}
+
+function DesktopButtons({ url,logout }: Readonly<{ url: string,logout:()=>void }>) {
+  const {carItems} = useCar()
+
+  return (
+    <section className="headerButtons">
+      <Link className={url === "comics" ? "link active" : "link"} to="/comics">
+        Quadrinhos
+      </Link>
+      <Link
+        className={url === "characters" ? "link active" : "link"}
+        to="/characters"
+      >
+        Personagens
+      </Link>
+      <div className="cartIcon">
+        {carItems.length ? <div className="dot" /> : <></>}
+        <BsCart3 />
+      </div>
+      <button onClick={logout}>
+        <RxExit />
+        Sair
+      </button>
+    </section>
+  );
+}
+
+function MobileButtons() {
+  const {carItems} = useCar()
+
+  return (
+    <section className="mobileButtons">
+      <div className="cartIcon">
+        {carItems.length ? <div className="dot" /> : <></>}
+        <BsCart3 />
+      </div>
+      <RxHamburgerMenu />
+    </section>
   );
 }

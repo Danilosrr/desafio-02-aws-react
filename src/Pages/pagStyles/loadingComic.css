@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
+
+.loading {
+  background: linear-gradient(135deg, #fe8550 0%, #ff8100 50%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  color: #ff8100;
+  font-family: "Sofia Sans", sans-serif;
+  background-image: url(../../Assets/logo-loading.png);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 35%;
+  background-size: 5%;
+  animation: background-animation 5s ease-in-out infinite;
+  margin: auto;
+  font-size: 25px;
+}
+
+@keyframes background-animation {
+  0% {
+    background-size: 7%;
+  }
+  50% {
+    background-size: 10%;
+  }
+  100% {
+    background-size: 5%;
+  }
+}
