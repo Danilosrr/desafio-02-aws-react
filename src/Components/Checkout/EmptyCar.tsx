@@ -1,6 +1,6 @@
 import React from "react";
 import './StylesCar/EmptyCar.css'
-import cartIcon from './img/icon-shopping-cart.svg'
+import cartIcon from '../../Assets/img-checkout/icon-shopping-cart.svg';
 import Header from "../Header/Header";
 
 const EmptyCar: React.FC = ()=>{

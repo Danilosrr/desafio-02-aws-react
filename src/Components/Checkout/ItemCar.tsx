@@ -1,7 +1,7 @@
 import React from "react";
 import EmptyCar from "./EmptyCar";
 import {useCar} from './CheckoutLogic';
-import trashIcon from './img/trashIcon.svg';
+import trashIcon from '../../Assets/img-checkout/trashIcon.svg';
 import './StylesCar/ItemCar.css';
 import Header from "../Header/Header";
 import FooterBuy from "./FooterBuy";
