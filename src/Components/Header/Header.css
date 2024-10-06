@@ -276,3 +276,7 @@
     display: none !important;
   }
 }
+
+.cartLink{
+  color: inherit;
+}
