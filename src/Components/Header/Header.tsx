@@ -68,10 +68,12 @@ function DesktopButtons({
         >
           Personagens
         </Link>
-        <div className="cartIcon">
-          {carItems.length ? <div className="dot" /> : <></>}
-          <BsCart3 />
-        </div>
+        <Link to="/carrinho" className="cartLink">
+          <div className="cartIcon">
+            {carItems.length ? <div className="dot" /> : <></>}
+            <BsCart3 />
+          </div>
+        </Link>
         <button onClick={logout}>
           <RxExit />
           Sair
@@ -108,10 +110,12 @@ function MobileButtons({ clickMenuMobile }: { clickMenuMobile: () => void }) {
 
   return (
     <section className="mobileButtons">
-      <div className="cartIcon">
-        {carItems.length ? <div className="dot" /> : <></>}
-        <BsCart3 />
-      </div>
+      <Link to="/carrinho" className="cartLink">
+        <div className="cartIcon">
+          {carItems.length ? <div className="dot" /> : <></>}
+          <BsCart3 />
+        </div>
+      </Link>
       <RxHamburgerMenu onClick={clickMenuMobile} />
     </section>
   );

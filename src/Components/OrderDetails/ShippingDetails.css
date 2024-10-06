@@ -69,8 +69,10 @@
     align-items: center;
 
     .title {
-        font-size: 42px;
+        font-size: 40px;
         font-weight: 800;
+        line-height: 40px;
+        margin: 16px;
     }
 
     .shippingDetails,

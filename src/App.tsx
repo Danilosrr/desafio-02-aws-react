@@ -29,7 +29,7 @@ function App() {
             <Route path="/comics/:id" element={<ComicDetailsPage />} />
             <Route path='/characters' element={<CharacterList/>}/>      
             <Route path='/characters/:id' element={<ComicDetailsPage/>}/>
-            <Route path="/order" element={<OrderDetailsPage />} />
+            <Route path="/buyinfo" element={<OrderDetailsPage />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/carrinho" element={<ItemCar/>} />
           </Routes>

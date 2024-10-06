@@ -6,24 +6,29 @@ import "./ShippingDetails.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useCar } from "../Checkout/CheckoutLogic";
+import { OrderDetails } from "./OrderDetails";
 
 export const ShippingDetails: React.FC = () => {
   const navigate = useNavigate();
-  const [paymentMethod, setPaymentMethod] = useState("dinheiro");
+  const [paymentMethod, setPaymentMethod] = useState<"dinheiro" | "cartão de crédito" | "cartão de débito">("dinheiro");
+  const [finish, setFinish] = useState<boolean>(false);
   const {carItems} = useCar();
 
   const itemsPrice = carItems.reduce((n, {price}) => n + price, 0);
 
   const shippingPrice = Math.floor(Math.random() * 20);
-  
 
-  function handleNavigate() {
-    navigate("/comics");
+  const shippingtime= Math.floor(Math.random() * 14);
+
+
+  function handleFinish() {
+    //esperando logica
+    setFinish(true);
   }
 
   function handlePayment(e: React.MouseEvent<HTMLButtonElement>) {
     console.log('click')
-    setPaymentMethod(e.currentTarget.value);
+    setPaymentMethod(e.currentTarget.value as "dinheiro" | "cartão de crédito" | "cartão de débito");
   }
 
   function checkActive(value:string):string {
@@ -31,7 +36,7 @@ export const ShippingDetails: React.FC = () => {
     else return "";
   }
 
-  return (
+  return ( finish?
     <>
       <main className="mainShipping">
         <section className="title">
@@ -107,9 +112,9 @@ export const ShippingDetails: React.FC = () => {
             <p>total</p>
             <b>{itemsPrice+shippingPrice}</b>
           </span>
-          <button onClick={handleNavigate}>Finalizar compra</button>
+          <button onClick={handleFinish}>Finalizar compra</button>
         </div>
       </footer>
-    </>
+    </>:<OrderDetails address="" time={shippingtime} paymentMethod={paymentMethod}/>
   );
 };
