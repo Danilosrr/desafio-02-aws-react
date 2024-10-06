@@ -3,13 +3,11 @@ import { BsCurrencyDollar } from "react-icons/bs";
 
 import { PiCreditCardLight, PiBankLight, PiMoneyThin } from "react-icons/pi";
 import "./ShippingDetails.css";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useCar } from "../Checkout/CheckoutLogic";
 import { OrderDetails } from "./OrderDetails";
 
 export const ShippingDetails: React.FC = () => {
-  const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState<"dinheiro" | "cartão de crédito" | "cartão de débito">("dinheiro");
   const [finish, setFinish] = useState<boolean>(false);
   const {carItems} = useCar();
@@ -36,7 +34,7 @@ export const ShippingDetails: React.FC = () => {
     else return "";
   }
 
-  return ( finish?
+  return ( !finish?
     <>
       <main className="mainShipping">
         <section className="title">
@@ -102,15 +100,15 @@ export const ShippingDetails: React.FC = () => {
         <div className="column">
           <span>
             <p>total de itens</p>
-            <b>{itemsPrice}</b>
+            <b>R$ {itemsPrice}</b>
           </span>
           <span>
             <p>entrega</p>
-            <b>{shippingPrice}</b>
+            <b>R$ {shippingPrice}</b>
           </span>
           <span className="total">
             <p>total</p>
-            <b>{itemsPrice+shippingPrice}</b>
+            <b>R$ {(itemsPrice+shippingPrice).toFixed(2)}</b>
           </span>
           <button onClick={handleFinish}>Finalizar compra</button>
         </div>

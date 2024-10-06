@@ -49,10 +49,10 @@ console.log(carItems);
                 </div>
                 <img src={trashIcon} alt="lixeira de remover item" className="remove-item" onClick={()=> removeItem(item.id)}/>
                 <div className="product-price">
-                <p>R$ {item.price.toFixed(2)}</p>
+                <p>R$ {(item.price*item.quantity).toFixed(2)}</p>
                 </div>
                 </div>
-            ))};
+            ))}
         </div>
         <FooterBuy />
       

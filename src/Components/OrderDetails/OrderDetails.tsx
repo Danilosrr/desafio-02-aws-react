@@ -2,13 +2,16 @@ import { IoIosPin, IoIosClock } from "react-icons/io";
 import { BsCurrencyDollar } from "react-icons/bs";
 import "./OrderDetails.css";
 import { useNavigate } from "react-router-dom";
-import { Shipping } from "../Checkout/CheckoutLogic";
+import { Shipping, useCar } from "../Checkout/CheckoutLogic";
 
 
 export const OrderDetails:React.FC<Shipping> = ({ address, paymentMethod, time }:Shipping) => {
   const navigate = useNavigate();
+  const {carItems,removeItem} = useCar();
 
   function handleNavigate(){
+    carItems.forEach(({id}) => removeItem(id))
+    localStorage.removeItem("cartItems");
     navigate("/comics")
   }
   

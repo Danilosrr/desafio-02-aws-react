@@ -54,7 +54,7 @@ export default function ComicDetails() {
         id,
         title,
         price: prices[0].price, 
-        image:images[0].path+images[0].extension,
+        image:images[0].path+'.'+images[0].extension,
         quantity: 1
       }
       addItem(item);

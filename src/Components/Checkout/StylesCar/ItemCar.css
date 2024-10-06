@@ -21,6 +21,8 @@
     font-size: 32px;
     margin-bottom:64px;
     margin-top: 32px;
+    max-width: 80%;
+    align-self: center;
 }
 .Car-item{
     display: flex;
@@ -91,9 +93,8 @@
     cursor: pointer;
     position: absolute;
     margin-top: -10px;
-    margin-left: 799px;
-    
-    
+    position: absolute;
+    right: 0;
 }
 .remove-item img{
     width: 48px; 
