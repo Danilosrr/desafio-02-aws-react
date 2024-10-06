@@ -24,7 +24,8 @@ export default function Header() {
 
   function verifyUrl() {
     if (location.pathname.includes("comic")) return "comics";
-    else return "characters";
+    else if(location.pathname.includes("character")) return "characters";
+    else return '';
   }
 
   return (
