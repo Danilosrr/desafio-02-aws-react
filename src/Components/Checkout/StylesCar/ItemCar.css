@@ -2,7 +2,7 @@
 
 .car{
     font-family: "Sofia Sans";
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin:20px;
@@ -41,6 +41,8 @@
     height: 170px;
     width: 122px;
     margin:16px;
+   
+  
 }
 .item-detail{
     display: flex;
@@ -104,3 +106,61 @@
     
   
  }
+ @media screen and (max-width:768px){
+   .car{
+    margin-bottom: 32px;
+    text-align: center;
+   }
+    .car h1{
+         font-size: 32px;
+        
+    }
+    .title{
+        font-size: 16px;
+     
+      
+    }
+    .quadrinho{
+        align-items: center;
+        margin-bottom: 16px;
+        margin-top: 32px;
+        
+    }
+    .Car-item{
+        flex-direction: column;
+        align-items: center;
+        width: 359px;
+        height: 402px;
+        position: relative;
+        
+     
+   
+    }
+
+    .quantity-control {
+      align-items: center;
+      margin-left: 121px;
+      margin-right: 121px;
+  
+
+
+    }
+  
+    .product-price {
+      text-align: center; 
+      margin-top: 12px;
+      font-size: 32px;
+      position:static;
+      margin-bottom: 32px;
+    
+    }
+  
+    .Car-item {
+      flex-direction: column;
+      align-items: center;
+    }
+    .remove-item{
+        margin-left: 340px;
+        position: absolute;
+    }
+}
