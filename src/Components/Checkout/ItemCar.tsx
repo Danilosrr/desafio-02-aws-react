@@ -4,6 +4,7 @@ import {useCar} from './CheckoutLogic';
 import trashIcon from './img/trashIcon.svg';
 import './StylesCar/ItemCar.css';
 import Header from "../Header/Header";
+import FooterBuy from "./FooterBuy";
 
 
 
@@ -33,7 +34,7 @@ const ItemCar: React.FC = ()=>{
     };
 
     return(
-        <>
+        <>      
             <Header />
         <div className="car">
         <h1>Meu Carrinho</h1>
@@ -42,7 +43,7 @@ const ItemCar: React.FC = ()=>{
                 <img src={item.image} alt={item.title} className="quadrinho"/>
                 <div className="item-detail">
                 <h2 className="title">{item.title}</h2> 
-                <div className="quantity-control">
+                <div className="quantity-control"> 
                     <button onClick={()=>Decrese(item.id)}>-</button>
                     <span className="number">{item.quantity}</span>
                     <button onClick={()=>Increse(item.id)}>+</button>
@@ -55,6 +56,8 @@ const ItemCar: React.FC = ()=>{
                 </div>
             ))};
         </div>
+        <FooterBuy />
+      
         </>
     );
 };
