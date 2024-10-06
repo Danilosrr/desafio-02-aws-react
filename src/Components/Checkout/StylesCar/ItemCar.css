@@ -2,7 +2,7 @@
 
 .car{
     font-family: "Sofia Sans";
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin:20px;
@@ -10,9 +10,17 @@
 }
 .car h1{
     text-align: center;
-    margin-top: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
     font-size: 64px;
+    font-weight: bold;
     
+    
+}
+.title{
+    font-size: 32px;
+    margin-bottom:64px;
+    margin-top: 32px;
 }
 .Car-item{
     display: flex;
@@ -33,12 +41,19 @@
     height: 170px;
     width: 122px;
     margin:16px;
+   
+  
 }
+
 .item-detail{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex-grow: 1;
+   
+}
+.quantity-control button:disabled{
+    background-color:#BABABA ;
 }
 
 .quantity-control{
@@ -49,7 +64,7 @@
     background: rgb(255, 255, 255);
     justify-content: space-between;
     align-items: center;
-    margin-top:62px;
+    margin-bottom:61.34px;
 }
 
 
@@ -57,21 +72,21 @@
     background-color: #ff8100;;
     color: #F3F3F3;
     border:none;
-    font-size: 16px;
+    font-size: 36px;
     align-items: center;
     font-weight: bold;
      width: 38.64px;
      height: 38.64px;
      border-radius: 50%;
     display: flex;
-    justify-content: center;
+    justify-content:center;
 
 
 }
 .remove-item{
     margin-left: 15px;
     background-color: #ff8100;
-    border-radius: 8px;
+    border-radius: 0px 8px;
     padding: 8px;
     cursor: pointer;
     position: absolute;
@@ -96,3 +111,61 @@
     
   
  }
+ @media screen and (max-width:768px){
+   .car{
+    margin-bottom: 32px;
+    text-align: center;
+   }
+    .car h1{
+         font-size: 32px;
+        
+    }
+    .title{
+        font-size: 16px;
+     
+      
+    }
+    .quadrinho{
+        align-items: center;
+        margin-bottom: 16px;
+        margin-top: 32px;
+        
+    }
+    .Car-item{
+        flex-direction: column;
+        align-items: center;
+        width: 359px;
+        height: 402px;
+        position: relative;
+        
+     
+   
+    }
+
+    .quantity-control {
+      align-items: center;
+      margin-left: 121px;
+      margin-right: 121px;
+  
+
+
+    }
+  
+    .product-price {
+      text-align: center; 
+      margin-top: 12px;
+      font-size: 32px;
+      position:static;
+      margin-bottom: 32px;
+    
+    }
+  
+    .Car-item {
+      flex-direction: column;
+      align-items: center;
+    }
+    .remove-item{
+        margin-left: 340px;
+        position: absolute;
+    }
+}

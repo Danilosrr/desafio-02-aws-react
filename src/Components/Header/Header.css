@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
 
 @media (min-width: 376px) {
   .header {
     z-index: 99;
     position: sticky;
     top: 0;
-        background-color: #FAFFFD;
+    background-color: #FAFFFD;
     padding: 16px;
     display: flex;
     gap: 64px;
@@ -22,7 +23,8 @@
 
     box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
 
-    font-family: "Sofia Sans", sans-serif;
+    font-family: "Sofia Sans",
+    sans-serif;
     line-height: 130%;
 
     .mobileButtons {
@@ -39,7 +41,7 @@
     }
 
     b {
-            color: #FF8100;
+      color: #FF8100;
     }
 
     img {
@@ -75,8 +77,8 @@
     gap: 16px;
 
     button {
-            color: #FAFFFD;
-            background-color: #FF8100;
+      color: #FAFFFD;
+      background-color: #FF8100;
       padding: 6px 8px;
       gap: 8px;
       border-radius: 6px;
@@ -94,7 +96,7 @@
       position: relative;
 
       div {
-                background-color: #FF8100;
+        background-color: #FF8100;
         position: absolute;
         top: 0;
         right: 0;
@@ -105,7 +107,7 @@
     }
 
     .active {
-            color: #FF8100
+      color: #FF8100
     }
   }
 }
@@ -115,19 +117,21 @@
     z-index: 99;
     position: sticky;
     top: 0;
-        background-color: #FAFFFD;
+    background-color: #FAFFFD;
     padding: 12px 8px;
     gap: 18px;
     display: grid;
 
     box-shadow: 0px 12px 24px 12px rgba(243, 243, 243, 0.5);
-        font-family: "Sofia Sans",
-            sans-serif;
+    font-family: "Sofia Sans",
+      sans-serif;
     line-height: 130%;
   }
+
   .headerButtons {
     display: none !important;
   }
+
   .logo {
     display: flex;
     align-items: center;
@@ -138,19 +142,23 @@
       font-size: 24px;
       font-weight: 800;
     }
+
     b {
-            color: #FF8100;
+      color: #FF8100;
     }
+
     img {
       width: 32px;
       height: 32px;
     }
+
     input,
     button {
       display: flex;
       align-items: center;
       background-color: transparent;
     }
+
     .mobileButtons {
       display: flex;
       align-items: center;
@@ -164,7 +172,7 @@
         position: relative;
 
         div {
-                    background-color: #FF8100;
+          background-color: #FF8100;
           position: absolute;
           top: 0;
           right: 0;
@@ -184,17 +192,20 @@
     height: 32px;
     padding: 12px;
     border-radius: 30px;
-        background-color: #F3F3F3;
-        color: #BABABA;
+    background-color: #F3F3F3;
+    color: #BABABA;
 
-        input, button {
+    input,
+    button {
       border: none;
       background-color: transparent;
     }
+
     button {
-            color: #BABABA;
+      color: #BABABA;
       font-size: 18px;
     }
+
     input:focus {
       outline: none;
     }
@@ -219,7 +230,7 @@
   font-size: 18px;
   font-weight: 400;
   text-decoration: none !important;
-  
+
 
   button {
     color: #fafffd;
@@ -261,7 +272,7 @@
 }
 
 @media (min-width:1001px) {
-    .headerButtons-mobile{
-        display: none!important;
-    }
+  .headerButtons-mobile {
+    display: none !important;
+  }
 }

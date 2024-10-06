@@ -1,8 +1,10 @@
 import React from "react";
 import EmptyCar from "./EmptyCar";
 import {useCar} from './CheckoutLogic';
-import trashIcon from './img/trashIcon.svg';
+import trashIcon from '../../Assets/img-checkout/trashIcon.svg';
 import './StylesCar/ItemCar.css';
+import Header from "../Header/Header";
+import FooterBuy from "./FooterBuy";
 
 
 
@@ -30,15 +32,17 @@ const ItemCar: React.FC = ()=>{
     };
 console.log(carItems);
     return(
+        <>      
+            <Header />
         <div className="car">
         <h1>Meu Carrinho</h1>
          {carItems.map(item=>(
             <div key={item.id} className="Car-item">
                 <img src={item.image} alt={item.title} className="quadrinho"/>
                 <div className="item-detail">
-                <h2>{item.title}</h2> 
-                <div className="quantity-control">
-                    <button onClick={()=>Decrese(item.id)}>-</button>
+                <h2 className="title">{item.title}</h2> 
+                <div className="quantity-control"> 
+                    <button onClick={()=>Decrese(item.id)} disabled={item.quantity <=1}>-</button>
                     <span className="number">{item.quantity}</span>
                     <button onClick={()=>Increse(item.id)}>+</button>
                 </div>
@@ -50,6 +54,9 @@ console.log(carItems);
                 </div>
             ))};
         </div>
+        <FooterBuy />
+      
+        </>
     );
 };
 
