@@ -12,6 +12,7 @@ import LoginForm from './Components/LoginForm/LoginForm';
 import CharacterContext from './Contexts/CharacterListContext';
 import { CarProvider } from './Components/Checkout/CheckoutLogic';
 import ItemCar from './Components/Checkout/ItemCar';
+import FooterBuy from './Components/Checkout/FooterBuy';
 
 function App() {
   return (
