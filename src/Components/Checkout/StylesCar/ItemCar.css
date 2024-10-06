@@ -44,11 +44,16 @@
    
   
 }
+
 .item-detail{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex-grow: 1;
+   
+}
+.quantity-control button:disabled{
+    background-color:#BABABA ;
 }
 
 .quantity-control{
@@ -67,14 +72,14 @@
     background-color: #ff8100;;
     color: #F3F3F3;
     border:none;
-    font-size: 16px;
+    font-size: 36px;
     align-items: center;
     font-weight: bold;
      width: 38.64px;
      height: 38.64px;
      border-radius: 50%;
     display: flex;
-    justify-content: center;
+    justify-content:center;
 
 
 }

@@ -44,7 +44,7 @@ const ItemCar: React.FC = ()=>{
                 <div className="item-detail">
                 <h2 className="title">{item.title}</h2> 
                 <div className="quantity-control"> 
-                    <button onClick={()=>Decrese(item.id)}>-</button>
+                    <button onClick={()=>Decrese(item.id)} disabled={item.quantity <=1}>-</button>
                     <span className="number">{item.quantity}</span>
                     <button onClick={()=>Increse(item.id)}>+</button>
                 </div>
