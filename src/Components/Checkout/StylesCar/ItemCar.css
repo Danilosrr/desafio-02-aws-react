@@ -122,9 +122,7 @@
         
     }
     .title{
-        font-size: 16px;
-     
-      
+        font-size: 16px !important;
     }
     .quadrinho{
         align-items: center;
@@ -138,9 +136,6 @@
         width: 359px;
         height: 402px;
         position: relative;
-        
-     
-   
     }
 
     .quantity-control {
@@ -164,6 +159,7 @@
     .Car-item {
       flex-direction: column;
       align-items: center;
+      height: fit-content;
     }
     .remove-item{
         margin-left: 340px;
