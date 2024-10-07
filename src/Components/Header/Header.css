@@ -98,6 +98,13 @@
       border-radius: 6px;
       border: none;
     }
+
+    button:hover{
+      background-color: #f3f3f3!important;
+      color: #0c0c0c;
+      cursor: pointer;
+    }
+
     .link {
       text-decoration: none;
       color: #0c0c0c;
