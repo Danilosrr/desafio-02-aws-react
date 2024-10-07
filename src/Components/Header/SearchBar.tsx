@@ -44,9 +44,11 @@ export default function SearchBar({ url }: Readonly<{ url: string }>) {
     }
   }
 
+  const visible = (window.location.pathname == "/comics" || window.location.pathname =="/characters")
+
   return (
     <section
-      className="searchBar"
+      className={visible?"searchBar":"searchBarHidden"}
       onClick={() => {searchInput.current?.focus();}}
     >
       <button onClick={handleSearch} disabled={loading}>
