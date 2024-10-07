@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 374px) and (max-width: 767px) {
+@media (min-width: 374px) and (max-width: 768px) {
   .comic-Content-img {
     width: 240px !important;
     height: 333.33px;
@@ -104,4 +104,10 @@
   text-decoration: none;
   border: none;
   cursor: pointer;
+}
+
+.button-List:hover{
+  background: #FAFFFD;
+  border: 1px solid #FF8100;
+  color: #FF8100;
 }
