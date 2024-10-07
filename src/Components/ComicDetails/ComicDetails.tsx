@@ -59,7 +59,7 @@ export default function ComicDetails() {
       }
       addItem(item);
       notify(`${item.title} adicionado ao carrinho`,true)
-      if (now) navigate("/checkout");
+      if (now) navigate("/carrinho");
     }
   }
 
