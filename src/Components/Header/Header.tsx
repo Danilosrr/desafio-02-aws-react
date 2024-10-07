@@ -25,6 +25,7 @@ export default function Header() {
   function verifyUrl() {
     if (location.pathname.includes("comic")) return "comics";
     else if(location.pathname.includes("character")) return "characters";
+    else if(location.pathname.includes("carrinho")) return "carrinho";
     else return '';
   }
 
@@ -35,7 +36,7 @@ export default function Header() {
         <h1>
           <b>UOL</b>Comics
         </h1>
-        <MobileButtons clickMenuMobile={clickMenuMobile} />
+        <MobileButtons url={verifyUrl()} clickMenuMobile={clickMenuMobile} />
       </section>
       <SearchBar url={verifyUrl()} />
       <DesktopButtons
@@ -105,13 +106,13 @@ function DesktopButtons({
     </section>
   );
 }
-function MobileButtons({ clickMenuMobile }: { clickMenuMobile: () => void }) {
+function MobileButtons({ clickMenuMobile, url }: { clickMenuMobile: () => void, url:string }) {
   const { carItems } = useCar();
 
 
   return (
     <section className="mobileButtons">
-      <Link to="/carrinho" className="cartLink">
+      <Link to="/carrinho" className={url=='carrinho'?"cartLink active":"cartLink"}>
         <div className="cartIcon">
           {carItems.length ? <div className="dot" /> : <></>}
           <BsCart3 />
