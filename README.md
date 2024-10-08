@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# Desafio 02 - AWS React 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição do Projeto   
 
-## Available Scripts
+O UOL Comics é uma plataforma interativa que proporciona aos usuários a oportunidade de explorar uma extensa gama de quadrinhos e figuras da Marvel. A plataforma, além de fornecer informações aprofundadas sobre quadrinhos e personagens, também possibilita aos usuários efetuar compras de maneira simples e visualizar suas coleções em um ambiente acolhedor. O projeto foi criado com o objetivo de proporcionar uma experiência de usuário intuitiva e recursos sólidos.  
 
-In the project directory, you can run:
+## Tecnologias Utilizadas  
 
-### `npm start`
+- **React** (JS/TS)  
+- **React Router DOM** para navegação  
+- **Axios** para requisições HTTP  
+- **Context API** para gerenciamento de estado  
+- **React Toastify** para exibir notificações.
+- **TypesScript:** para criação de tipagem 
+- **React Icons:** para exibir icones
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instalação
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-**1.Clone o repositório: git clone https:**//github.com/Danilosrr/desafio-02-aws-react
+-**2.Navegue até o diretório do projeto:**cd desafio-02-aws-react
+-**3.Instale as dependências:**npm install
+-**4.Inicie o servidor de desenvolvimento:**npm start
 
-### `npm test`
+## Funcionalidades  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Funcionalidades Principais  
 
-### `npm run build`
+- **Exploração de Quadrinhos e Personagens**: Navegação e visualização de uma vasta coleção de quadrinhos e personagens da Marvel.  
+- **Cadastro e Login de Usuário**: Armazenamento de sessões via Local Storage.  
+- **Detalhes do Quadrinho e do Personagem**: Informações detalhadas, incluindo autores, data de criação, valores, quadrinhos/personagens relacionados e ilustrações.  
+- **Adição ao Carrinho**: Permite que os usuários adicionem quadrinhos ao carrinho para compra.  
+- **Processo de Compra**: Finalização de compras com input de endereço e métodos de pagamento.  
+- **Pesquisa Funcional**: Filtragem de resultados a partir das APIs da Marvel, permitindo que os usuários encontrem rapidamente o que procuram.  
+- **Interatividade**: Feedback visual em botões, links e ações do usuário.  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requisitos  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Requisitos Gerais  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Consumo das APIs públicas da Marvel.  
+- Implementação de rotas utilizando React Router.  
+- Criação de páginas e componentes conforme um design especificado.  
+- Responsividade com foco em mobile-first.  
+- Componentização de elementos, utilizando props.  
+- Uso de hooks básicos e, se necessário, criação de hooks customizados.  
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
